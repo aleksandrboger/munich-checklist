@@ -726,6 +726,26 @@
       <div class="item-why">Высшая точка страны! Канатная дорога или зубчатый поезд поднимают на вершину, где ледник, снег даже летом и вид на 4 страны. Ощущение — как на крыше мира.</div>
     </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Zugspitze" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
 
+    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
+      <div class="item-title">☀️ Гармиш-Партенкирхен — альпийская сказка</div>
+      <div class="item-why">1,5 часа на поезде — и вы в сердце баварских Альп. Разноцветные дома с фресками на фасадах (Lüftlmalerei), горные вершины вокруг, ущелье Партнахкламм с ледяной водой и подвесными мостиками. Отсюда же стартует канатная дорога на Цугшпице.</div>
+    </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Garmisch-Partenkirchen" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
+
+    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
+      <div class="item-title">☀️ Озеро Химзее — «Баварское море»</div>
+      <div class="item-why">Крупнейшее озеро Баварии — 1 час на поезде. Паром доставит на остров Херренинзель с роскошным дворцом Людвига II (Баварский Версаль) и на тихий женский остров Фрауэнинзель с монастырём и рыбными ресторанчиками.</div>
+    </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Chiemsee+Prien" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
+
+    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
+      <div class="item-title">☀️ Куфштайн — крепость в Тирольских Альпах</div>
+      <div class="item-why">1 час на поезде — и вы в Австрии! Над городком возвышается мощная средневековая крепость прямо на скале. Внутри — музей и самый большой в мире открытый орган «Хелденоргель», звучащий каждый день в полдень. Уютные улочки, кафе с штруделем и вид на горы.</div>
+    </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Festung+Kufstein" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
+
+    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
+      <div class="item-title">☀️ Регенсбург и Вальхалла <span class="b b-must">обязательно</span></div>
+      <div class="item-why">1,5 часа на поезде. Средневековый старый город — объект ЮНЕСКО: каменный мост XII века, готический собор, итальянские башни-дома. А в 10 км от города на холме над Дунаем стоит Вальхалла — величественный храм-пантеон в стиле Парфенона с бюстами 200 великих немцев.</div>
+    </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Walhalla+Memorial+Donaustauf" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
+
   </ul>
 </div>
 
@@ -783,12 +803,12 @@
 
   function save() {
     const s = Array.from(document.querySelectorAll('.item')).map(i => i.classList.contains('done'));
-    try { localStorage.setItem('mcl6', JSON.stringify(s)); } catch(e) {}
+    try { localStorage.setItem('mcl7', JSON.stringify(s)); } catch(e) {}
   }
 
   (function load() {
     try {
-      const r = localStorage.getItem('mcl6');
+      const r = localStorage.getItem('mcl7');
       if (!r) return;
       const s = JSON.parse(r);
       document.querySelectorAll('.item').forEach((el, i) => { if (s[i]) el.classList.add('done'); });
