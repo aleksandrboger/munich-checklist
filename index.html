@@ -390,6 +390,11 @@
       <div class="item-title">☀️ Кёнигсплатц — «Мюнхенские Афины» <span class="b b-free">бесплатно</span></div>
       <div class="item-why">Три монументальных здания в античном стиле — как будто перенеслись в Древнюю Грецию.</div>
     </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Königsplatz+Munich" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
+
+    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
+      <div class="item-title">☀️ Хиршгартен — крупнейший пивной сад в мире <span class="b b-must">обязательно</span></div>
+      <div class="item-why">8 000 мест под открытым небом — рекорд! Огромный парк, старые каштаны, загон с настоящими оленями (Hirsch = олень). Можно принести свою еду и купить только пиво — баварская традиция.</div>
+    </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Hirschgarten+Biergarten+Munich" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
   </ul>
 </div>
 
@@ -494,157 +499,82 @@
   </ul>
 </div>
 
-<!-- ═══════════════ 5. ЕДА И ПИВО ═══════════════ -->
-<div class="cat" data-color="red">
-  <div class="cat-head">
-    <span class="cat-icon">🍺</span>
-    <span class="cat-name">Баварская еда и пиво</span>
-    <span class="cat-cnt" id="c5"></span>
-  </div>
-  <ul class="items" data-cat="5">
-    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☂️ Хофбройхаус — легендарная пивная <span class="b b-must">обязательно</span></div>
-      <div class="item-why">Самая знаменитая пивная в мире — основана в 1589 году. Огромные залы с расписными сводами, живая баварская музыка, литровые кружки. Здесь пили пиво Моцарт, Ленин и Кеннеди.</div>
-    </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Hofbräuhaus+Munich" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
-
-    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☀️ Пивной сад «Августинер» — любимое место местных</div>
-      <div class="item-why">Мюнхенцы считают Augustiner Keller самым «настоящим». Под огромными каштанами разливают пиво из деревянных бочек — традиция с 1812 года. Здесь нет туристической суеты, только подлинная Бавария.</div>
-    </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Augustiner+Keller+Munich" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
-
-    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☀️ Хиршгартен — крупнейший пивной сад в мире <span class="b b-must">обязательно</span></div>
-      <div class="item-why">8 000 мест под открытым небом — это рекорд! Огромный парк, старые каштаны, загон с оленями (Hirsch = олень). Можно принести свою еду и купить только пиво — это баварская традиция. Рядом — детская площадка.</div>
-    </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Hirschgarten+Biergarten+Munich" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
-
-    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☀️ Пивной сад у Китайской пагоды <span class="b b-food">еда и пиво</span></div>
-      <div class="item-why">7 000 мест прямо в Английском саду. Пятиэтажная деревянная пагода, под ней — столы с пивом и живой баварской музыкой. Атмосфера незабываемая, особенно в тёплый вечер.</div>
-    </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Chinesischer+Turm+Biergarten+Munich" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
-
-    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☂️ Белая колбаска (Weißwurst) с претцелем <span class="b b-food">попробовать</span></div>
-      <div class="item-why">Баварский ритуал: нежная белая колбаска в кипятке, свежий претцель и сладкая горчица. Обязательно до 12:00 — после полудня истинные баварцы не едят Weißwurst!</div>
-    </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Schneider+Bräuhaus+Munich" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
-
-    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☂️ Свиная рулька (Schweinsbraten) на ужин <span class="b b-food">попробовать</span></div>
-      <div class="item-why">Хрустящая корочка, нежное мясо, тушёная капуста и картофельные клёцки. Порции огромные — одной рульки хватит на двоих. Коронное блюдо баварской кухни.</div>
-    </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Wirtshaus+in+der+Au+Munich" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
-
-    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☂️ Далльмайр — храм гастрономии <span class="b b-food">попробовать</span></div>
-      <div class="item-why">Роскошный деликатесный магазин с 1700 года. Витрины как в музее — сыры из 12 стран, колбасы ручной работы, шоколад, 30 сортов кофе. Просто зайти и разглядывать — уже приключение.</div>
-    </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Dallmayr+Munich" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
-
-    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☂️ Купить подарки домой в Далльмайр <span class="b b-tip">совет</span></div>
-      <div class="item-why">Кофе Dallmayr в красивой золотой упаковке, баварские конфеты, мармелад — лучшие съедобные сувениры, от которых все дома будут в восторге.</div>
-    </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Dallmayr+Munich" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
-
-    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☂️ Leberkäse — мясной хлеб в булочке <span class="b b-food">попробовать</span></div>
-      <div class="item-why">Горячий розовый ломтик в хрустящей булке — лучший уличный перекус Мюнхена. Стоит всего ~2 €, а сытность — как полноценный обед. Продаётся в каждой мясной лавке.</div>
-    </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Viktualienmarkt+Munich" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
-
-    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☂️ Пончики в кафе Frischhut <span class="b b-food">попробовать</span></div>
-      <div class="item-why">Кафе работает с 1904 года у самого рынка. Пончики Schmalznudeln жарят прямо при вас — горячие, хрустящие, присыпанные сахаром.</div>
-    </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Café+Frischhut+Munich" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
-
-    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☂️ Кэзешпэцле — сырная лапша <span class="b b-food">попробовать</span></div>
-      <div class="item-why">Käsespätzle — это баварские «мак-энд-чиз»: мягкая лапша, расплавленный сыр и хрустящий жареный лук сверху. Сытно, нежно и по-домашнему вкусно.</div>
-    </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Augustiner+Stammhaus+Munich" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
-
-    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☀️ Обацда — сырная закуска к пиву <span class="b b-food">попробовать</span></div>
-      <div class="item-why">Нежная смесь камамбера с маслом, луком и паприкой — намазывают на свежий претцель. В любом пивном саду подают как главную закуску к пиву.</div>
-    </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Viktualienmarkt+Biergarten+Munich" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
-
-    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☀️ Кофе и пирог в кафе «Тамбози» <span class="b b-food">попробовать</span></div>
-      <div class="item-why">Старейшее кафе Мюнхена — с 1775 года! Терраса с видом на Хофгартен. Идеальное место для послеобеденного кофе со штруделем — сидишь, смотришь на деревья и фонтан.</div>
-    </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Tambosi+Munich+Odeonsplatz" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
-  </ul>
-</div>
-
-<!-- ═══════════════ 6. РЕСТОРАНЫ ═══════════════ -->
+<!-- ═══════════════ 5. РЕСТОРАНЫ ═══════════════ -->
 <div class="cat" data-color="brown">
   <div class="cat-head">
     <span class="cat-icon">🍽️</span>
     <span class="cat-name">Рестораны</span>
-    <span class="cat-cnt" id="c6"></span>
+    <span class="cat-cnt" id="c5"></span>
   </div>
-  <ul class="items" data-cat="6">
+  <ul class="items" data-cat="5">
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☂️ Haxengrill <span class="b b-food">колено</span></div>
-      <div class="item-why">Культовое место для свиной рульки — хрустящая корочка, сочное мясо, щедрые порции. Простая обстановка, зато вкус настоящий баварский.</div>
+      <div class="item-title">🍖 Haxengrill <span class="b b-food">колено</span></div>
+      <div class="item-why">Культовое место для свиной рульки — хрустящая корочка, сочное мясо, щедрые порции.</div>
     </div><a class="map" href="https://maps.app.goo.gl/gi1qfkvM8KcKtGkY7" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
 
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☂️ Wirtshaus in der Au <span class="b b-food">утка</span></div>
-      <div class="item-why">Уютный трактир у реки Изар, знаменитый запечённой уткой и кнёдлями. Атмосфера старой Баварии с деревянными столами и тёплым светом.</div>
+      <div class="item-title">🦆 Wirtshaus in der Au <span class="b b-food">утка</span></div>
+      <div class="item-why">Уютный трактир у реки Изар, знаменитый запечённой уткой и кнёдлями.</div>
     </div><a class="map" href="https://maps.app.goo.gl/or6gQazW67jCkw9WA" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
 
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☂️ Hofbräu am Oberwiesenfeld</div>
-      <div class="item-why">Филиал легендарного Хофбройхауса рядом с Олимпийским парком — те же литровые кружки и баварская кухня, но без толп туристов из центра.</div>
+      <div class="item-title">🍺 Hofbräu am Oberwiesenfeld <span class="b b-food">пивная</span></div>
+      <div class="item-why">Филиал легендарного Хофбройхауса рядом с Олимпийским парком.</div>
     </div><a class="map" href="https://maps.app.goo.gl/DkjvNPZWVu44tdar9" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
 
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☂️ Wirtshaus Maxvorstadt</div>
-      <div class="item-why">Традиционный баварский трактир в университетском квартале — честная домашняя кухня, пиво из бочки и расслабленная атмосфера среди местных.</div>
+      <div class="item-title">🍺 Wirtshaus Maxvorstadt <span class="b b-food">пивная</span></div>
+      <div class="item-why">Традиционный баварский трактир в университетском квартале.</div>
     </div><a class="map" href="https://maps.app.goo.gl/R1yuQoXJQbvY9MmaA" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
 
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☀️ Mini-Hofbräuhaus im Englischen Garten</div>
+      <div class="item-title">🍺 Mini-Hofbräuhaus im Englischen Garten <span class="b b-food">пивная</span></div>
       <div class="item-why">Маленький уютный Хофбройхаус прямо в Английском саду — можно совместить прогулку по парку с кружкой пива и баварским перекусом на свежем воздухе.</div>
     </div><a class="map" href="https://maps.app.goo.gl/7XS5QFr9m7XMHCjX9" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
 
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☂️ Alles Wurscht <span class="b b-food">сосиски</span></div>
-      <div class="item-why">Лучшие колбаски Мюнхена — десятки сортов на гриле: нюрнбергские, карри, краковские. Быстро, вкусно и недорого.</div>
+      <div class="item-title">🌭 Alles Wurscht <span class="b b-food">сосиски</span></div>
+      <div class="item-why">Лучшие колбаски Мюнхена — десятки сортов на гриле: нюрнбергские, карри, краковские.</div>
     </div><a class="map" href="https://maps.app.goo.gl/LMqZsxr6nyfZqshD8" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
 
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☂️ Bohemia München <span class="b b-food">чешская кухня</span></div>
-      <div class="item-why">Чешский ресторан с сытной кухней: свичкова, кнедлики, гуляш и отличное чешское пиво. Приятная альтернатива баварской классике.</div>
+      <div class="item-title">🍲 Bohemia München <span class="b b-food">чешская кухня</span></div>
+      <div class="item-why">Чешский ресторан с сытной кухней: свичкова, кнедлики, гуляш и отличное чешское пиво.</div>
     </div><a class="map" href="https://maps.app.goo.gl/EaH5qztjpRqauYvD7" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
 
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☂️ KONO Korean Steakhouse</div>
-      <div class="item-why">Корейский стейкхаус — мясо жарят прямо на вашем столе. Яркие вкусы, маринады и гарниры, которых не найти в баварских ресторанах.</div>
+      <div class="item-title">🥩 KONO Korean Steakhouse <span class="b b-food">гриль</span></div>
+      <div class="item-why">Корейский стейкхаус — мясо жарят прямо на вашем столе.</div>
     </div><a class="map" href="https://maps.app.goo.gl/BaTRGbhvk2BBjx827" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
 
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☂️ BLOCK HOUSE Rindermarkt <span class="b b-food">стейки</span></div>
-      <div class="item-why">Проверенная немецкая сеть стейков — сочное мясо на гриле, большие порции и отличный салат-бар. Прямо в центре, рядом с Мариенплатц.</div>
+      <div class="item-title">🥩 BLOCK HOUSE Rindermarkt <span class="b b-food">стейки</span></div>
+      <div class="item-why">Проверенная немецкая сеть стейков — сочное мясо на гриле, большие порции и отличный салат-бар.</div>
     </div><a class="map" href="https://maps.app.goo.gl/KgHos3TfefbDrecp8" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
 
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☂️ 60 seconds to Napoli <span class="b b-food">пицца</span></div>
-      <div class="item-why">Неаполитанская пицца из дровяной печи за 60 секунд — тонкое тесто, моцарелла, томаты Сан-Марцано. Одна из лучших пиццерий города.</div>
+      <div class="item-title">🍕 60 seconds to Napoli <span class="b b-food">пицца</span></div>
+      <div class="item-why">Неаполитанская пицца из дровяной печи. Одна из лучших пиццерий города.</div>
     </div><a class="map" href="https://maps.app.goo.gl/cQPuWduk76pk4NMk7" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
 
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☂️ il Vesuvio <span class="b b-food">пицца</span></div>
-      <div class="item-why">Семейная итальянская пиццерия — классическая неаполитанская пицца с хрустящим краем, домашняя паста и дружелюбная обстановка.</div>
+      <div class="item-title">🍕 il Vesuvio <span class="b b-food">пицца</span></div>
+      <div class="item-why">Семейная итальянская пиццерия — классическая неаполитанская пицца с хрустящим краем.</div>
     </div><a class="map" href="https://maps.app.goo.gl/9EXpSfyubWVE7c7L8" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
 
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☂️ Eataly</div>
-      <div class="item-why">Итальянский гастрономический рай — ресторан, кафе и магазин под одной крышей. Свежая паста, сыры, вино и деликатесы прямо с прилавка.</div>
+      <div class="item-title">🍝 Eataly <span class="b b-food">пицца и апероль</span></div>
+      <div class="item-why">Итальянский гастрономический рай — ресторан, кафе и магазин под одной крышей.</div>
     </div><a class="map" href="https://maps.app.goo.gl/uxUknmr2T3GqCTfN6" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
 
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☂️ Nostos Taverna <span class="b b-food">греческая кухня</span></div>
-      <div class="item-why">Настоящая греческая таверна — мусака, сувлаки, свежие салаты с фетой и оливковым маслом. Тёплая средиземноморская атмосфера.</div>
+      <div class="item-title">🐙 Nostos Taverna <span class="b b-food">греческая кухня</span></div>
+      <div class="item-why">Настоящая греческая таверна.</div>
     </div><a class="map" href="https://maps.app.goo.gl/z7BKeaRBgea9cWCW6" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
 
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☂️ Kreta Meer <span class="b b-food">греческая кухня</span></div>
-      <div class="item-why">Критская кухня — свежая рыба, осьминог на гриле, дзадзики и домашнее вино. Уютный интерьер в морском стиле.</div>
+      <div class="item-title">🐟 Kreta Meer <span class="b b-food">греческая кухня</span></div>
+      <div class="item-why">Критская кухня.</div>
     </div><a class="map" href="https://maps.app.goo.gl/JG5W5cqMap29enTi7" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
   </ul>
 </div>
@@ -654,9 +584,9 @@
   <div class="cat-head">
     <span class="cat-icon">☕</span>
     <span class="cat-name">Кафе</span>
-    <span class="cat-cnt" id="c7"></span>
+    <span class="cat-cnt" id="c6"></span>
   </div>
-  <ul class="items" data-cat="7">
+  <ul class="items" data-cat="6">
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
       <div class="item-title">☂️ Dallmayr Delikatessenhaus</div>
       <div class="item-why">Легендарное кафе при деликатесном магазине с 1700 года — изысканные торты, кофе собственной обжарки и роскошные витрины с деликатесами.</div>
@@ -664,7 +594,7 @@
 
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
       <div class="item-title">☂️ Dinatale Cafe</div>
-      <div class="item-why">Стильное итальянское кафе с отличным эспрессо, свежей выпечкой и лёгкими завтраками. Уютное место для утреннего кофе.</div>
+      <div class="item-why">Стильное итальянское кафе с отличным эспрессо, свежей выпечкой и лёгкими завтраками.</div>
     </div><a class="map" href="https://maps.app.goo.gl/AfWnSXV9TuKpDkJd9" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
 
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
@@ -679,32 +609,32 @@
 
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
       <div class="item-title">☂️ KANSO COFFEE LAB</div>
-      <div class="item-why">Минималистичная кофейня «третьей волны» — specialty-кофе, авторские напитки и спокойная японская эстетика в интерьере.</div>
+      <div class="item-why">Минималистичная кофейня и спокойная японская эстетика в интерьере.</div>
     </div><a class="map" href="https://maps.app.goo.gl/vCxNxAqo5Q33T3Zt7" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
 
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
       <div class="item-title">☂️ Ralph's Coffee Munich</div>
-      <div class="item-why">Кафе от Ralph Lauren — элегантный интерьер в зелёных тонах, фирменный кофе и десерты. Красивое место для фото и отдыха.</div>
+      <div class="item-why">Кафе от Ralph Lauren — элегантный интерьер в зелёных тонах, фирменный кофе и десерты.</div>
     </div><a class="map" href="https://maps.app.goo.gl/Y4Vm874Nku5vK1MEA" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
 
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
       <div class="item-title">☂️ Konditorei Erbshäuser</div>
-      <div class="item-why">Классическая немецкая кондитерская — торты ручной работы, пирожные и горячий шоколад. Как в старом кино про Мюнхен.</div>
+      <div class="item-why">Классическая немецкая кондитерская — торты ручной работы, пирожные и горячий шоколад.</div>
     </div><a class="map" href="https://maps.app.goo.gl/vQuFJKn44F6Hu1iW9" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
 
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
       <div class="item-title">☂️ Aran</div>
-      <div class="item-why">Ирландская пекарня с домашним содовым хлебом, скоунами и ароматным кофе. Тёплая уютная обстановка для неспешного утра.</div>
+      <div class="item-why">Ирландская пекарня с домашним содовым хлебом, скоунами и ароматным кофе.</div>
     </div><a class="map" href="https://maps.app.goo.gl/Y3fzyotgPUBWe62AA" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
 
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
       <div class="item-title">☂️ Claude & Julien <span class="b b-food">французская пекарня</span></div>
-      <div class="item-why">Настоящие французские круассаны, багеты и тарт-татен. Кусочек Парижа в Мюнхене — хрустящая выпечка прямо из печи.</div>
+      <div class="item-why">Настоящие французские круассаны, багеты и тарт-татен. Кусочек Парижа в Мюнхене.</div>
     </div><a class="map" href="https://maps.app.goo.gl/9NFjh7RB31WBrak46" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
 
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
       <div class="item-title">☂️ Zucker coffee & bakery</div>
-      <div class="item-why">Модная кофейня-пекарня — авторские десерты, латте на альтернативном молоке и свежие сэндвичи. Современный и стильный интерьер.</div>
+      <div class="item-why">Кофейня-пекарня — авторские десерты и кофе.</div>
     </div><a class="map" href="https://maps.app.goo.gl/PdJiDMLexz81k6m49" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
   </ul>
 </div>
@@ -714,13 +644,38 @@
   <div class="cat-head">
     <span class="cat-icon">🛍️</span>
     <span class="cat-name">Шопинг и сувениры</span>
-    <span class="cat-cnt" id="c8"></span>
+    <span class="cat-cnt" id="c7"></span>
   </div>
-  <ul class="items" data-cat="8">
+  <ul class="items" data-cat="7">
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
       <div class="item-title">☂️ Кауфингерштрассе — главная торговая улица <span class="b b-must">обязательно</span></div>
       <div class="item-why">Самая оживлённая пешеходная зона Мюнхена: от Мариенплатц до Карлсплатц (Штахус). Все мировые бренды, универмаги и уличные музыканты.</div>
     </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Kaufingerstraße+Munich" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
+
+    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
+      <div class="item-title">☂️ Sendlinger Straße</div>
+      <div class="item-why">Длинная торговая улица от Сендлингер Тор до Мариенплатц — модные магазины, бутики и Азамкирхе прямо по дороге.</div>
+    </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Sendlinger+Straße+Munich" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
+
+    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
+      <div class="item-title">☂️ Theatinerstraße</div>
+      <div class="item-why">Элегантная торговая улица между Мариенплатц и Одеонсплатц — премиальные бренды, красивые фасады и витрины.</div>
+    </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Theatinerstraße+Munich" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
+
+    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
+      <div class="item-title">☂️ Olympia-Einkaufszentrum (OEZ)</div>
+      <div class="item-why">Один из крупнейших торговых центров Мюнхена — более 130 магазинов под одной крышей. Удобно добраться на U-Bahn (U1/U7).</div>
+    </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Olympia-Einkaufszentrum+Munich" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
+
+    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
+      <div class="item-title">☂️ Dallmayr — подарки домой <span class="b b-tip">совет</span></div>
+      <div class="item-why">Кофе Dallmayr в золотой упаковке, баварские конфеты, мармелад — лучшие съедобные сувениры, от которых все дома будут в восторге.</div>
+    </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Dallmayr+Munich" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
+
+    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
+      <div class="item-title">☂️ servus.heimat — баварские сувениры <span class="b b-tip">совет</span></div>
+      <div class="item-why">Стильный магазин баварских сувениров — современный дизайн с альпийским характером: футболки, кружки, открытки и аксессуары.</div>
+    </div><a class="map" href="https://maps.app.goo.gl/oWs9HaFibAq1wM399" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
 
   </ul>
 </div>
@@ -730,9 +685,9 @@
   <div class="cat-head">
     <span class="cat-icon">🎨</span>
     <span class="cat-name">Музеи</span>
-    <span class="cat-cnt" id="c9"></span>
+    <span class="cat-cnt" id="c8"></span>
   </div>
-  <ul class="items" data-cat="9">
+  <ul class="items" data-cat="8">
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
       <div class="item-title">☂️ Немецкий музей науки и техники <span class="b b-must">обязательно</span></div>
       <div class="item-why">Крупнейший научно-технический музей в мире. Настоящая подводная лодка, спуск в шахту, самолёты в натуральную величину, молнии в лаборатории. Дети и взрослые в равном восторге — закладывайте минимум 3 часа. Вход ~15 €.</div>
@@ -771,9 +726,9 @@
   <div class="cat-head">
     <span class="cat-icon">⛪</span>
     <span class="cat-name">Красивые церкви</span>
-    <span class="cat-cnt" id="c10"></span>
+    <span class="cat-cnt" id="c9"></span>
   </div>
-  <ul class="items" data-cat="10">
+  <ul class="items" data-cat="9">
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
       <div class="item-title">☂️ Азамкирхе — маленький барочный шедевр <span class="b b-must">обязательно</span></div>
       <div class="item-why">Крошечная церковь шириной всего 8 метров — но внутри у вас отвиснет челюсть. Каждый сантиметр покрыт золотом, скульптурами и фресками. Братья Азам строили её для себя, поэтому не жалели ничего. Вход бесплатный.</div>
@@ -801,9 +756,9 @@
   <div class="cat-head">
     <span class="cat-icon">🚃</span>
     <span class="cat-name">Необычные впечатления</span>
-    <span class="cat-cnt" id="c11"></span>
+    <span class="cat-cnt" id="c10"></span>
   </div>
-  <ul class="items" data-cat="11">
+  <ul class="items" data-cat="10">
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
       <div class="item-title">☂️ Обзорная поездка на трамвае № 19 <span class="b b-tip">совет</span></div>
       <div class="item-why">Лучшая бюджетная «экскурсия» по Мюнхену! Садитесь на остановке <b>Karlsplatz (Stachus)</b> и езжайте до конечной <b>Pasing Bf.</b> — трамвай проедет через торговый центр города, мимо вокзала, через красивые жилые кварталы до Пазинга (~25 мин.). Обратно тем же маршрутом. Стоит как обычный билет на транспорт. Садитесь у окна и наслаждайтесь!</div>
@@ -847,9 +802,9 @@
   <div class="cat-head">
     <span class="cat-icon">🏔️</span>
     <span class="cat-name">Однодневные поездки</span>
-    <span class="cat-cnt" id="c12"></span>
+    <span class="cat-cnt" id="c11"></span>
   </div>
-  <ul class="items" data-cat="12">
+  <ul class="items" data-cat="11">
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
       <div class="item-title">☀️ Регенсбург и Вальхалла <span class="b b-must">обязательно</span></div>
       <div class="item-why">1,5 часа на поезде. Средневековый старый город — объект ЮНЕСКО: каменный мост XII века, готический собор, итальянские башни-дома. А в 10 км от города на холме над Дунаем стоит Вальхалла — величественный храм-пантеон в стиле Парфенона с бюстами 200 великих немцев.</div>
@@ -893,9 +848,9 @@
   <div class="cat-head">
     <span class="cat-icon">💡</span>
     <span class="cat-name">Полезные советы</span>
-    <span class="cat-cnt" id="c13"></span>
+    <span class="cat-cnt" id="c12"></span>
   </div>
-  <ul class="items" data-cat="13">
+  <ul class="items" data-cat="12">
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
       <div class="item-title">Купить недельный билет на транспорт <span class="b b-tip">совет</span></div>
       <div class="item-why">IsarCard Woche — безлимитный проезд на метро, автобусах, трамваях и электричках на 7 дней. Покупайте в автомате на любой станции. Для поездок за город (озёра, Гармиш) берите зоны M–6 или Bayern Ticket на день.</div>
@@ -919,7 +874,7 @@
 <footer>Приятного путешествия по Мюнхену! ✈️<br>© Саша и Маша Богер, 2026</footer>
 
 <script>
-  const NC = 13;
+  const NC = 12;
   function go(el) { el.classList.toggle('done'); sync(); save(); }
 
   function sync() {
@@ -942,12 +897,12 @@
 
   function save() {
     const s = Array.from(document.querySelectorAll('.item')).map(i => i.classList.contains('done'));
-    try { localStorage.setItem('mcl8', JSON.stringify(s)); } catch(e) {}
+    try { localStorage.setItem('mcl9', JSON.stringify(s)); } catch(e) {}
   }
 
   (function load() {
     try {
-      const r = localStorage.getItem('mcl8');
+      const r = localStorage.getItem('mcl9');
       if (!r) return;
       const s = JSON.parse(r);
       document.querySelectorAll('.item').forEach((el, i) => { if (s[i]) el.classList.add('done'); });
