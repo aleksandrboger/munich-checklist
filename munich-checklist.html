@@ -306,7 +306,7 @@
       box-shadow: 0 2px 12px rgba(0,0,0,0.08);
       z-index: 0;
     }
-    .emoji-marker { background: none; border: none; }
+    .emoji-marker { background: #fff; border: none; border-radius: 50%; box-shadow: 0 1px 4px rgba(0,0,0,.25); display: flex; align-items: center; justify-content: center; }
     .leaflet-popup-content {
       font-family: 'Inter', sans-serif;
       font-size: 0.85rem;
@@ -988,7 +988,7 @@
     var tiles = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
     var attr = '&copy; OpenStreetMap &copy; CARTO';
     function emojiIcon(e) {
-      return L.divIcon({ html: '<span style="font-size:22px">' + e + '</span>', className: 'emoji-marker', iconSize: [28, 28], iconAnchor: [14, 14], popupAnchor: [0, -14] });
+      return L.divIcon({ html: '<span style="font-size:18px">' + e + '</span>', className: 'emoji-marker', iconSize: [32, 32], iconAnchor: [16, 16], popupAnchor: [0, -16] });
     }
 
     function popup(name, desc, link) {
