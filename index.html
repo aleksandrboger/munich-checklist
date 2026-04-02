@@ -952,7 +952,8 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
   const NC = 12;
-  function go(el) { el.classList.toggle('done'); sync(); save(); }
+  var mapMarkers = {};
+  function go(el) { el.classList.toggle('done'); sync(); save(); syncMapMarkers(); }
 
   function sync() {
     const all  = document.querySelectorAll('.item:not(.no-check)');
@@ -1003,7 +1004,9 @@
     function addMarkers(map, pts) {
       var group = L.featureGroup();
       pts.forEach(function(p) {
-        L.marker([p.lat, p.lng], { icon: emojiIcon(p.ic || '📍') }).bindPopup(popup(p.name, p.desc, p.link)).addTo(map).addTo(group);
+        var m = L.marker([p.lat, p.lng], { icon: emojiIcon(p.ic || '📍') }).bindPopup(popup(p.name, p.desc, p.link)).addTo(map).addTo(group);
+        if (!mapMarkers[p.name]) mapMarkers[p.name] = [];
+        mapMarkers[p.name].push(m);
       });
       map.fitBounds(group.getBounds().pad(0.15));
     }
@@ -1120,7 +1123,25 @@
     return maps;
   }
 
+  function syncMapMarkers() {
+    var items = document.querySelectorAll('.item');
+    Object.keys(mapMarkers).forEach(function(name) {
+      var done = false;
+      items.forEach(function(item) {
+        var t = item.querySelector('.item-title');
+        if (t && t.textContent.indexOf(name) !== -1) done = item.classList.contains('done');
+      });
+      mapMarkers[name].forEach(function(m) {
+        var el = m.getElement();
+        if (el) {
+          el.style.filter = done ? 'grayscale(1) opacity(0.5)' : '';
+        }
+      });
+    });
+  }
+
   var allMaps = initMaps();
+  syncMapMarkers();
 
   if (navigator.geolocation) {
     navigator.geolocation.watchPosition(function(pos) {
