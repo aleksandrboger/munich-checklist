@@ -306,6 +306,7 @@
       box-shadow: 0 2px 12px rgba(0,0,0,0.08);
       z-index: 0;
     }
+    .emoji-marker { background: none; border: none; }
     .leaflet-popup-content {
       font-family: 'Inter', sans-serif;
       font-size: 0.85rem;
@@ -986,7 +987,9 @@
   function initMaps() {
     var tiles = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
     var attr = '&copy; OpenStreetMap &copy; CARTO';
-    var mStyle = { radius: 10, fillColor: '#E11D48', color: '#fff', weight: 2.5, opacity: 1, fillOpacity: 0.9 };
+    function emojiIcon(e) {
+      return L.divIcon({ html: '<span style="font-size:22px">' + e + '</span>', className: 'emoji-marker', iconSize: [28, 28], iconAnchor: [14, 14], popupAnchor: [0, -14] });
+    }
 
     function popup(name, desc, link) {
       return '<strong>' + name + '</strong>' + desc +
@@ -996,7 +999,7 @@
     function addMarkers(map, pts) {
       var group = L.featureGroup();
       pts.forEach(function(p) {
-        L.circleMarker([p.lat, p.lng], mStyle).bindPopup(popup(p.name, p.desc, p.link)).addTo(map).addTo(group);
+        L.marker([p.lat, p.lng], { icon: emojiIcon(p.ic || '📍') }).bindPopup(popup(p.name, p.desc, p.link)).addTo(map).addTo(group);
       });
       map.fitBounds(group.getBounds().pad(0.15));
     }
@@ -1007,22 +1010,22 @@
     var m1 = L.map('map-marienplatz', { scrollWheelZoom: false });
     L.tileLayer(tiles, { attribution: attr, maxZoom: 19 }).addTo(m1);
     addMarkers(m1, [
-      { lat: 48.1371, lng: 11.5754, name: 'Мариенплатц', desc: 'Каждый день в 11:00 и 12:00 на башне Новой Ратуши оживают 32 фигурки курантов.', link: 'https://www.google.com/maps/search/?api=1&query=Marienplatz+Munich' },
-      { lat: 48.1365, lng: 11.5760, name: 'Башня «Старый Петер»', desc: '306 ступенек — и весь Мюнхен лежит у ваших ног. Вход ~5\u00a0€.', link: 'https://www.google.com/maps/search/?api=1&query=Peterskirche+Munich' },
-      { lat: 48.1378, lng: 11.5754, name: 'Смотровая Новой Ратуши', desc: 'Есть лифт! С высоты видна Мариенплатц как на ладони. Вход ~6\u00a0€.', link: 'https://www.google.com/maps/search/?api=1&query=Neues+Rathaus+Munich' },
-      { lat: 48.1386, lng: 11.5735, name: 'Фрауэнкирхе', desc: 'Две «луковичные» башни — символ Мюнхена. Внутри — «след дьявола».', link: 'https://www.google.com/maps/search/?api=1&query=Frauenkirche+Munich' },
-      { lat: 48.1355, lng: 11.5762, name: 'Виктуалиенмаркт', desc: '200-летний рынок — душа мюнхенской гастрономии. 140 прилавков.', link: 'https://www.google.com/maps/search/?api=1&query=Viktualienmarkt+Munich' },
-      { lat: 48.1385, lng: 11.5704, name: 'Михаэльскирхе', desc: 'Самый большой ренессансный свод севернее Альп. В крипте покоится Людвиг II.', link: 'https://www.google.com/maps/search/?api=1&query=Michaelskirche+Munich' },
-      { lat: 48.1352, lng: 11.5695, name: 'Азамкирхе', desc: 'Крошечная церковь — каждый сантиметр покрыт золотом, скульптурами и фресками.', link: 'https://www.google.com/maps/search/?api=1&query=Asamkirche+Munich' },
-      { lat: 48.1380, lng: 11.5720, name: 'Кауфингерштрассе', desc: 'Главная торговая улица: от Мариенплатц до Карлсплатц.', link: 'https://www.google.com/maps/search/?api=1&query=Kaufingerstraße+Munich' },
-      { lat: 48.1383, lng: 11.5773, name: 'Dallmayr', desc: 'Кофе в золотой упаковке, чай, вино, баварские конфеты.', link: 'https://www.google.com/maps/search/?api=1&query=Dallmayr+Munich' },
-      { lat: 48.1377, lng: 11.5752, name: 'Vinzenzmurr', desc: 'Леберкез — горячий мясной хлеб в хрустящей булке.', link: 'https://www.google.com/maps/search/?api=1&query=Vinzenzmurr+Marienplatz+Munich' },
-      { lat: 48.1360, lng: 11.5747, name: 'BLOCK HOUSE', desc: 'Сочные стейки на гриле, большие порции и салат-бар.', link: 'https://maps.app.goo.gl/KgHos3TfefbDrecp8' },
-      { lat: 48.1340, lng: 11.5710, name: 'Sendlinger Straße', desc: 'Торговая улица от Сендлингер Тор до Мариенплатц — магазины, бутики и Азамкирхе.', link: 'https://www.google.com/maps/search/?api=1&query=Sendlinger+Straße+Munich' },
-      { lat: 48.1375, lng: 11.5785, name: 'Haxengrill', desc: 'Культовое место для свиной рульки — хрустящая корочка, сочное мясо.', link: 'https://maps.app.goo.gl/gi1qfkvM8KcKtGkY7' },
-      { lat: 48.1363, lng: 11.5731, name: 'servus.heimat', desc: 'Стильный магазин баварских сувениров и сувениров с таксами.', link: 'https://maps.app.goo.gl/oWs9HaFibAq1wM399' },
-      { lat: 48.1345, lng: 11.5748, name: 'Eataly', desc: 'Итальянский гастрономический рай — ресторан, кафе и магазин под одной крышей.', link: 'https://maps.app.goo.gl/uxUknmr2T3GqCTfN6' },
-      { lat: 48.1364, lng: 11.5719, name: '60 seconds to Napoli', desc: 'Неаполитанская пицца из дровяной печи. Одна из лучших пиццерий.', link: 'https://maps.app.goo.gl/cQPuWduk76pk4NMk7' }
+      { lat: 48.1371, lng: 11.5754, ic: '🏛', name: 'Мариенплатц', desc: 'Каждый день в 11:00 и 12:00 на башне Новой Ратуши оживают 32 фигурки курантов.', link: 'https://www.google.com/maps/search/?api=1&query=Marienplatz+Munich' },
+      { lat: 48.1365, lng: 11.5760, ic: '🏛', name: 'Башня «Старый Петер»', desc: '306 ступенек — и весь Мюнхен лежит у ваших ног. Вход ~5\u00a0€.', link: 'https://www.google.com/maps/search/?api=1&query=Peterskirche+Munich' },
+      { lat: 48.1378, lng: 11.5754, ic: '🏛', name: 'Смотровая Новой Ратуши', desc: 'Есть лифт! С высоты видна Мариенплатц как на ладони. Вход ~6\u00a0€.', link: 'https://www.google.com/maps/search/?api=1&query=Neues+Rathaus+Munich' },
+      { lat: 48.1386, lng: 11.5735, ic: '🏛', name: 'Фрауэнкирхе', desc: 'Две «луковичные» башни — символ Мюнхена. Внутри — «след дьявола».', link: 'https://www.google.com/maps/search/?api=1&query=Frauenkirche+Munich' },
+      { lat: 48.1355, lng: 11.5762, ic: '🏛', name: 'Виктуалиенмаркт', desc: '200-летний рынок — душа мюнхенской гастрономии. 140 прилавков.', link: 'https://www.google.com/maps/search/?api=1&query=Viktualienmarkt+Munich' },
+      { lat: 48.1385, lng: 11.5704, ic: '🏛', name: 'Михаэльскирхе', desc: 'Самый большой ренессансный свод севернее Альп. В крипте покоится Людвиг II.', link: 'https://www.google.com/maps/search/?api=1&query=Michaelskirche+Munich' },
+      { lat: 48.1352, lng: 11.5695, ic: '🏛', name: 'Азамкирхе', desc: 'Крошечная церковь — каждый сантиметр покрыт золотом, скульптурами и фресками.', link: 'https://www.google.com/maps/search/?api=1&query=Asamkirche+Munich' },
+      { lat: 48.1380, lng: 11.5720, ic: '🛍', name: 'Кауфингерштрассе', desc: 'Главная торговая улица: от Мариенплатц до Карлсплатц.', link: 'https://www.google.com/maps/search/?api=1&query=Kaufingerstraße+Munich' },
+      { lat: 48.1383, lng: 11.5773, ic: '🛍', name: 'Dallmayr', desc: 'Кофе в золотой упаковке, чай, вино, баварские конфеты.', link: 'https://www.google.com/maps/search/?api=1&query=Dallmayr+Munich' },
+      { lat: 48.1377, lng: 11.5752, ic: '🍴', name: 'Vinzenzmurr', desc: 'Леберкез — горячий мясной хлеб в хрустящей булке.', link: 'https://www.google.com/maps/search/?api=1&query=Vinzenzmurr+Marienplatz+Munich' },
+      { lat: 48.1360, lng: 11.5747, ic: '🍴', name: 'BLOCK HOUSE', desc: 'Сочные стейки на гриле, большие порции и салат-бар.', link: 'https://maps.app.goo.gl/KgHos3TfefbDrecp8' },
+      { lat: 48.1340, lng: 11.5710, ic: '🛍', name: 'Sendlinger Straße', desc: 'Торговая улица от Сендлингер Тор до Мариенплатц — магазины, бутики и Азамкирхе.', link: 'https://www.google.com/maps/search/?api=1&query=Sendlinger+Straße+Munich' },
+      { lat: 48.1375, lng: 11.5785, ic: '🍴', name: 'Haxengrill', desc: 'Культовое место для свиной рульки — хрустящая корочка, сочное мясо.', link: 'https://maps.app.goo.gl/gi1qfkvM8KcKtGkY7' },
+      { lat: 48.1363, lng: 11.5731, ic: '🛍', name: 'servus.heimat', desc: 'Стильный магазин баварских сувениров и сувениров с таксами.', link: 'https://maps.app.goo.gl/oWs9HaFibAq1wM399' },
+      { lat: 48.1345, lng: 11.5748, ic: '🍴', name: 'Eataly', desc: 'Итальянский гастрономический рай — ресторан, кафе и магазин под одной крышей.', link: 'https://maps.app.goo.gl/uxUknmr2T3GqCTfN6' },
+      { lat: 48.1364, lng: 11.5719, ic: '🍴', name: '60 seconds to Napoli', desc: 'Неаполитанская пицца из дровяной печи. Одна из лучших пиццерий.', link: 'https://maps.app.goo.gl/cQPuWduk76pk4NMk7' }
     ]);
     maps.push({ map: m1 });
 
@@ -1030,15 +1033,15 @@
     var m2 = L.map('map-odeonsplatz', { scrollWheelZoom: false });
     L.tileLayer(tiles, { attribution: attr, maxZoom: 19 }).addTo(m2);
     addMarkers(m2, [
-      { lat: 48.1428, lng: 11.5763, name: 'Одеонсплатц', desc: 'Парадная площадь: Театинеркирхе, Фельдхернхалле и Хофгартен — всё в одном кадре.', link: 'https://www.google.com/maps/search/?api=1&query=Odeonsplatz+Munich' },
-      { lat: 48.1412, lng: 11.5790, name: 'Резиденц', desc: '130 залов, усыпанных золотом и фресками — один из крупнейших дворцов Европы.', link: 'https://www.google.com/maps/search/?api=1&query=Residenz+Munich' },
-      { lat: 48.1427, lng: 11.5805, name: 'Хофгартен', desc: 'Идеально ухоженный итальянский парк прямо в центре города.', link: 'https://www.google.com/maps/search/?api=1&query=Hofgarten+Munich' },
-      { lat: 48.1420, lng: 11.5766, name: 'Театинеркирхе', desc: 'Ярко-жёлтый фасад, а внутри — ослепительно белый интерьер.', link: 'https://www.google.com/maps/search/?api=1&query=Theatinerkirche+Munich' },
-      { lat: 48.1400, lng: 11.5770, name: 'Theatinerstraße', desc: 'Элегантная торговая улица между Мариенплатц и Одеонсплатц.', link: 'https://www.google.com/maps/search/?api=1&query=Theatinerstraße+Munich' },
-      { lat: 48.1430, lng: 11.5782, name: 'TAMBOSI', desc: 'Старейшее кафе Мюнхена (1775 г.) с террасой у Хофгартена.', link: 'https://maps.app.goo.gl/X1rW1PgR214x3fBd7' },
-      { lat: 48.1405, lng: 11.5820, name: 'Максимилианштрассе', desc: 'Самая элегантная улица Мюнхена с неоготическими зданиями.', link: 'https://www.google.com/maps/search/?api=1&query=Maximilianstraße+Munich' },
-      { lat: 48.1502, lng: 11.5830, name: 'Dinatale Cafe', desc: 'Стильное итальянское кафе с отличным эспрессо и свежей выпечкой.', link: 'https://maps.app.goo.gl/AfWnSXV9TuKpDkJd9' },
-      { lat: 48.1394, lng: 11.5740, name: "Ralph's Coffee", desc: 'Кафе от Ralph Lauren — элегантный интерьер, фирменный кофе и десерты.', link: 'https://maps.app.goo.gl/Y4Vm874Nku5vK1MEA' }
+      { lat: 48.1428, lng: 11.5763, ic: '🏛', name: 'Одеонсплатц', desc: 'Парадная площадь: Театинеркирхе, Фельдхернхалле и Хофгартен — всё в одном кадре.', link: 'https://www.google.com/maps/search/?api=1&query=Odeonsplatz+Munich' },
+      { lat: 48.1412, lng: 11.5790, ic: '🏛', name: 'Резиденц', desc: '130 залов, усыпанных золотом и фресками — один из крупнейших дворцов Европы.', link: 'https://www.google.com/maps/search/?api=1&query=Residenz+Munich' },
+      { lat: 48.1427, lng: 11.5805, ic: '🏛', name: 'Хофгартен', desc: 'Идеально ухоженный итальянский парк прямо в центре города.', link: 'https://www.google.com/maps/search/?api=1&query=Hofgarten+Munich' },
+      { lat: 48.1420, lng: 11.5766, ic: '🏛', name: 'Театинеркирхе', desc: 'Ярко-жёлтый фасад, а внутри — ослепительно белый интерьер.', link: 'https://www.google.com/maps/search/?api=1&query=Theatinerkirche+Munich' },
+      { lat: 48.1400, lng: 11.5770, ic: '🛍', name: 'Theatinerstraße', desc: 'Элегантная торговая улица между Мариенплатц и Одеонсплатц.', link: 'https://www.google.com/maps/search/?api=1&query=Theatinerstraße+Munich' },
+      { lat: 48.1430, lng: 11.5782, ic: '☕', name: 'TAMBOSI', desc: 'Старейшее кафе Мюнхена (1775 г.) с террасой у Хофгартена.', link: 'https://maps.app.goo.gl/X1rW1PgR214x3fBd7' },
+      { lat: 48.1405, lng: 11.5820, ic: '🏛', name: 'Максимилианштрассе', desc: 'Самая элегантная улица Мюнхена с неоготическими зданиями.', link: 'https://www.google.com/maps/search/?api=1&query=Maximilianstraße+Munich' },
+      { lat: 48.1502, lng: 11.5830, ic: '☕', name: 'Dinatale Cafe', desc: 'Стильное итальянское кафе с отличным эспрессо и свежей выпечкой.', link: 'https://maps.app.goo.gl/AfWnSXV9TuKpDkJd9' },
+      { lat: 48.1394, lng: 11.5740, ic: '☕', name: "Ralph's Coffee", desc: 'Кафе от Ralph Lauren — элегантный интерьер, фирменный кофе и десерты.', link: 'https://maps.app.goo.gl/Y4Vm874Nku5vK1MEA' }
     ]);
     maps.push({ map: m2 });
 
@@ -1046,11 +1049,11 @@
     var m3 = L.map('map-englgarten', { scrollWheelZoom: false });
     L.tileLayer(tiles, { attribution: attr, maxZoom: 19 }).addTo(m3);
     addMarkers(m3, [
-      { lat: 48.1435, lng: 11.5878, name: 'Eisbachwelle', desc: 'Знаменитая волна для серфинга прямо в центре города — у входа в Английский сад.', link: 'https://www.google.com/maps/search/?api=1&query=Eisbachwelle+Munich' },
-      { lat: 48.1499, lng: 11.5909, name: 'Монопт', desc: 'Античный храм-ротонда на холме с панорамой парка.', link: 'https://www.google.com/maps/search/?api=1&query=Monopteros+Munich' },
-      { lat: 48.1526, lng: 11.5921, name: 'Китайская башня', desc: 'Знаменитый пивной сад на 7 000 мест у подножия деревянной пагоды.', link: 'https://www.google.com/maps/search/?api=1&query=Chinesischer+Turm+Munich' },
-      { lat: 48.1618, lng: 11.5962, name: 'Японский чайный домик', desc: 'Островок Японии в Баварии: ручей, мостик и аутентичный домик для чайных церемоний.', link: 'https://www.google.com/maps/search/?api=1&query=Japanisches+Teehaus+Englischer+Garten+Munich' },
-      { lat: 48.1670, lng: 11.6076, name: 'Mini-Hofbräuhaus', desc: 'Маленький Хофбройхаус прямо в Английском саду — пиво и баварский перекус на свежем воздухе.', link: 'https://maps.app.goo.gl/7XS5QFr9m7XMHCjX9' }
+      { lat: 48.1435, lng: 11.5878, ic: '🏛', name: 'Eisbachwelle', desc: 'Знаменитая волна для серфинга прямо в центре города — у входа в Английский сад.', link: 'https://www.google.com/maps/search/?api=1&query=Eisbachwelle+Munich' },
+      { lat: 48.1499, lng: 11.5909, ic: '🏛', name: 'Монопт', desc: 'Античный храм-ротонда на холме с панорамой парка.', link: 'https://www.google.com/maps/search/?api=1&query=Monopteros+Munich' },
+      { lat: 48.1526, lng: 11.5921, ic: '🍴', name: 'Китайская башня', desc: 'Знаменитый пивной сад на 7 000 мест у подножия деревянной пагоды.', link: 'https://www.google.com/maps/search/?api=1&query=Chinesischer+Turm+Munich' },
+      { lat: 48.1618, lng: 11.5962, ic: '🏛', name: 'Японский чайный домик', desc: 'Островок Японии в Баварии: ручей, мостик и аутентичный домик для чайных церемоний.', link: 'https://www.google.com/maps/search/?api=1&query=Japanisches+Teehaus+Englischer+Garten+Munich' },
+      { lat: 48.1670, lng: 11.6076, ic: '🍴', name: 'Mini-Hofbräuhaus', desc: 'Маленький Хофбройхаус прямо в Английском саду — пиво и баварский перекус на свежем воздухе.', link: 'https://maps.app.goo.gl/7XS5QFr9m7XMHCjX9' }
     ]);
     maps.push({ map: m3 });
 
@@ -1058,19 +1061,19 @@
     var m4 = L.map('map-olympia', { scrollWheelZoom: false });
     L.tileLayer(tiles, { attribution: attr, maxZoom: 19 }).addTo(m4);
     addMarkers(m4, [
-      { lat: 48.1744, lng: 11.5537, name: 'Олимпийская башня', desc: 'Скоростной лифт за 30 секунд поднимает на 291 м. В ясный день видны Альпы. Вход ~13\u00a0€.', link: 'https://www.google.com/maps/search/?api=1&query=Olympiaturm+Munich' },
-      { lat: 48.1731, lng: 11.5465, name: 'Олимпийский стадион', desc: 'Легендарная стеклянная «паутинная» крыша — революция в архитектуре.', link: 'https://www.google.com/maps/search/?api=1&query=Olympiastadion+Munich' },
-      { lat: 48.1715, lng: 11.5460, name: 'Олимпийское озеро', desc: 'Педальные и гребные лодки среди зелёных холмов.', link: 'https://www.google.com/maps/search/?api=1&query=Olympiasee+Munich' },
-      { lat: 48.1699, lng: 11.5516, name: 'Олимпийский холм', desc: 'Лучшая бесплатная смотровая площадка: весь парк, башня BMW и Альпы.', link: 'https://www.google.com/maps/search/?api=1&query=Olympiaberg+Munich' },
-      { lat: 48.1772, lng: 11.5564, name: 'BMW Welt', desc: 'Футуристическое здание-облако. Новейшие модели BMW, Mini и Rolls-Royce. Бесплатно.', link: 'https://www.google.com/maps/search/?api=1&query=BMW+Welt+Munich' },
-      { lat: 48.1769, lng: 11.5591, name: 'Музей BMW', desc: 'Здание-«чаша». История марки с 1916 года: мотоциклы, спорткары и концепты. Вход ~10\u00a0€.', link: 'https://www.google.com/maps/search/?api=1&query=BMW+Museum+Munich' },
-      { lat: 48.1662, lng: 11.5619, name: 'Hofbräu am Oberwiesenfeld', desc: 'Филиал Хофбройхауса рядом с Олимпийским парком. Попробуйте кайзершмаррн!', link: 'https://maps.app.goo.gl/DkjvNPZWVu44tdar9' },
-      { lat: 48.1835, lng: 11.5663, name: 'Nostos Taverna', desc: 'Настоящая греческая таверна рядом с Олимпийским парком.', link: 'https://maps.app.goo.gl/z7BKeaRBgea9cWCW6' },
-      { lat: 48.1857, lng: 11.5525, name: 'Kreta Meer', desc: 'Настоящая Критская кухня рядом с Олимпийским парком.', link: 'https://maps.app.goo.gl/JG5W5cqMap29enTi7' },
-      { lat: 48.1821, lng: 11.5309, name: 'Olympia-Einkaufszentrum', desc: 'Один из крупнейших торговых центров Мюнхена — более 130 магазинов.', link: 'https://www.google.com/maps/search/?api=1&query=Olympia-Einkaufszentrum+Munich' },
-      { lat: 48.1867, lng: 11.5458, name: 'H2 Hotel Oberwiesenfeld', desc: 'Ваш отель — рядом с Олимпийским парком.', link: 'https://www.google.com/maps/search/?api=1&query=H2+Hotel+München+Oberwiesenfeld' },
-      { lat: 48.1855, lng: 11.5525, name: 'il Vesuvio', desc: 'Семейная итальянская пиццерия — классическая неаполитанская пицца.', link: 'https://maps.app.goo.gl/9EXpSfyubWVE7c7L8' },
-      { lat: 48.1834, lng: 11.5372, name: 'KONO Korean Steakhouse', desc: 'Корейский стейкхаус — мясо жарят прямо на вашем столе.', link: 'https://maps.app.goo.gl/BaTRGbhvk2BBjx827' }
+      { lat: 48.1744, lng: 11.5537, ic: '🏛', name: 'Олимпийская башня', desc: 'Скоростной лифт за 30 секунд поднимает на 291 м. В ясный день видны Альпы. Вход ~13\u00a0€.', link: 'https://www.google.com/maps/search/?api=1&query=Olympiaturm+Munich' },
+      { lat: 48.1731, lng: 11.5465, ic: '🏛', name: 'Олимпийский стадион', desc: 'Легендарная стеклянная «паутинная» крыша — революция в архитектуре.', link: 'https://www.google.com/maps/search/?api=1&query=Olympiastadion+Munich' },
+      { lat: 48.1715, lng: 11.5460, ic: '🏛', name: 'Олимпийское озеро', desc: 'Педальные и гребные лодки среди зелёных холмов.', link: 'https://www.google.com/maps/search/?api=1&query=Olympiasee+Munich' },
+      { lat: 48.1699, lng: 11.5516, ic: '🏛', name: 'Олимпийский холм', desc: 'Лучшая бесплатная смотровая площадка: весь парк, башня BMW и Альпы.', link: 'https://www.google.com/maps/search/?api=1&query=Olympiaberg+Munich' },
+      { lat: 48.1772, lng: 11.5564, ic: '🏛', name: 'BMW Welt', desc: 'Футуристическое здание-облако. Новейшие модели BMW, Mini и Rolls-Royce. Бесплатно.', link: 'https://www.google.com/maps/search/?api=1&query=BMW+Welt+Munich' },
+      { lat: 48.1769, lng: 11.5591, ic: '🏛', name: 'Музей BMW', desc: 'Здание-«чаша». История марки с 1916 года: мотоциклы, спорткары и концепты. Вход ~10\u00a0€.', link: 'https://www.google.com/maps/search/?api=1&query=BMW+Museum+Munich' },
+      { lat: 48.1662, lng: 11.5619, ic: '🍴', name: 'Hofbräu am Oberwiesenfeld', desc: 'Филиал Хофбройхауса рядом с Олимпийским парком. Попробуйте кайзершмаррн!', link: 'https://maps.app.goo.gl/DkjvNPZWVu44tdar9' },
+      { lat: 48.1835, lng: 11.5663, ic: '🍴', name: 'Nostos Taverna', desc: 'Настоящая греческая таверна рядом с Олимпийским парком.', link: 'https://maps.app.goo.gl/z7BKeaRBgea9cWCW6' },
+      { lat: 48.1857, lng: 11.5525, ic: '🍴', name: 'Kreta Meer', desc: 'Настоящая Критская кухня рядом с Олимпийским парком.', link: 'https://maps.app.goo.gl/JG5W5cqMap29enTi7' },
+      { lat: 48.1821, lng: 11.5309, ic: '🛍', name: 'Olympia-Einkaufszentrum', desc: 'Один из крупнейших торговых центров Мюнхена — более 130 магазинов.', link: 'https://www.google.com/maps/search/?api=1&query=Olympia-Einkaufszentrum+Munich' },
+      { lat: 48.1867, lng: 11.5458, ic: '🏨', name: 'H2 Hotel Oberwiesenfeld', desc: 'Ваш отель — рядом с Олимпийским парком.', link: 'https://www.google.com/maps/search/?api=1&query=H2+Hotel+München+Oberwiesenfeld' },
+      { lat: 48.1855, lng: 11.5525, ic: '🍴', name: 'il Vesuvio', desc: 'Семейная итальянская пиццерия — классическая неаполитанская пицца.', link: 'https://maps.app.goo.gl/9EXpSfyubWVE7c7L8' },
+      { lat: 48.1834, lng: 11.5372, ic: '🍴', name: 'KONO Korean Steakhouse', desc: 'Корейский стейкхаус — мясо жарят прямо на вашем столе.', link: 'https://maps.app.goo.gl/BaTRGbhvk2BBjx827' }
     ]);
     maps.push({ map: m4 });
 
@@ -1078,14 +1081,14 @@
     var m5 = L.map('map-isar', { scrollWheelZoom: false });
     L.tileLayer(tiles, { attribution: attr, maxZoom: 19 }).addTo(m5);
     addMarkers(m5, [
-      { lat: 48.1290, lng: 11.5865, name: 'Wirtshaus in der Au', desc: 'Уютный трактир у Изара — запечённая утка и кнёдли. Пиво Paulaner.', link: 'https://maps.app.goo.gl/or6gQazW67jCkw9WA' },
-      { lat: 48.1300, lng: 11.5829, name: 'Немецкий музей', desc: 'Крупнейший научно-технический музей в мире. Подводная лодка, шахта, молнии. Вход ~15\u00a0€.', link: 'https://www.google.com/maps/search/?api=1&query=Deutsches+Museum+Munich' },
-      { lat: 48.1364, lng: 11.5944, name: 'Максимилианеум', desc: 'Здание баварского парламента на холме. Фасад с фресками возвышается над Изаром.', link: 'https://www.google.com/maps/search/?api=1&query=Maximilianeum+Munich' },
-      { lat: 48.1308, lng: 11.5782, name: 'Прогулка вдоль Изара', desc: 'Галечные пляжи и дикая зелень прямо в городе. Бирюзовая вода — как в Альпах.', link: 'https://www.google.com/maps/search/?api=1&query=Isar+Munich+Reichenbachbrücke' },
-      { lat: 48.0963, lng: 11.5542, name: 'Зоопарк Хеллабрунн', desc: '750 видов животных в «географических зонах». Минимум 4 часа. Вход ~17\u00a0€.', link: 'https://www.google.com/maps/search/?api=1&query=Tierpark+Hellabrunn+Munich' },
-      { lat: 48.1303, lng: 11.5983, name: 'Au-Haidhausen', desc: 'Район Ау — уютные улочки на правом берегу Изара с пивными и кафе.', link: 'https://www.google.com/maps/search/?api=1&query=Au+München' },
-      { lat: 48.1308, lng: 11.5888, name: 'Bohemia München', desc: 'Чешский ресторан: свичкова, кнедлики, гуляш и отличное чешское пиво.', link: 'https://maps.app.goo.gl/EaH5qztjpRqauYvD7' },
-      { lat: 48.1416, lng: 11.6005, name: 'Claude & Julien', desc: 'Настоящие французские круассаны, багеты и тарт-татен. Кусочек Парижа в Мюнхене.', link: 'https://maps.app.goo.gl/9NFjh7RB31WBrak46' }
+      { lat: 48.1290, lng: 11.5865, ic: '🍴', name: 'Wirtshaus in der Au', desc: 'Уютный трактир у Изара — запечённая утка и кнёдли. Пиво Paulaner.', link: 'https://maps.app.goo.gl/or6gQazW67jCkw9WA' },
+      { lat: 48.1300, lng: 11.5829, ic: '🏛', name: 'Немецкий музей', desc: 'Крупнейший научно-технический музей в мире. Подводная лодка, шахта, молнии. Вход ~15\u00a0€.', link: 'https://www.google.com/maps/search/?api=1&query=Deutsches+Museum+Munich' },
+      { lat: 48.1364, lng: 11.5944, ic: '🏛', name: 'Максимилианеум', desc: 'Здание баварского парламента на холме. Фасад с фресками возвышается над Изаром.', link: 'https://www.google.com/maps/search/?api=1&query=Maximilianeum+Munich' },
+      { lat: 48.1308, lng: 11.5782, ic: '🏛', name: 'Прогулка вдоль Изара', desc: 'Галечные пляжи и дикая зелень прямо в городе. Бирюзовая вода — как в Альпах.', link: 'https://www.google.com/maps/search/?api=1&query=Isar+Munich+Reichenbachbrücke' },
+      { lat: 48.0963, lng: 11.5542, ic: '🏛', name: 'Зоопарк Хеллабрунн', desc: '750 видов животных в «географических зонах». Минимум 4 часа. Вход ~17\u00a0€.', link: 'https://www.google.com/maps/search/?api=1&query=Tierpark+Hellabrunn+Munich' },
+      { lat: 48.1303, lng: 11.5983, ic: '🏛', name: 'Au-Haidhausen', desc: 'Район Ау — уютные улочки на правом берегу Изара с пивными и кафе.', link: 'https://www.google.com/maps/search/?api=1&query=Au+München' },
+      { lat: 48.1308, lng: 11.5888, ic: '🍴', name: 'Bohemia München', desc: 'Чешский ресторан: свичкова, кнедлики, гуляш и отличное чешское пиво.', link: 'https://maps.app.goo.gl/EaH5qztjpRqauYvD7' },
+      { lat: 48.1416, lng: 11.6005, ic: '☕', name: 'Claude & Julien', desc: 'Настоящие французские круассаны, багеты и тарт-татен. Кусочек Парижа в Мюнхене.', link: 'https://maps.app.goo.gl/9NFjh7RB31WBrak46' }
     ]);
     maps.push({ map: m5 });
 
