@@ -989,6 +989,8 @@
       });
     }
 
+    var maps = [];
+
     // 1. Marienplatz
     var m1 = L.map('map-marienplatz', { scrollWheelZoom: false }).setView([48.1370, 11.5745], 16);
     L.tileLayer(tiles, { attribution: attr, maxZoom: 19 }).addTo(m1);
@@ -1005,6 +1007,7 @@
       { lat: 48.1368, lng: 11.5762, name: 'Vinzenzmurr', desc: 'Леберкез — горячий мясной хлеб в хрустящей булке.', link: 'https://www.google.com/maps/search/?api=1&query=Vinzenzmurr+Marienplatz+Munich' },
       { lat: 48.1360, lng: 11.5740, name: 'BLOCK HOUSE', desc: 'Сочные стейки на гриле, большие порции и салат-бар.', link: 'https://maps.app.goo.gl/KgHos3TfefbDrecp8' }
     ]);
+    maps.push({ map: m1 });
 
     // 2. Odeonsplatz
     var m2 = L.map('map-odeonsplatz', { scrollWheelZoom: false }).setView([48.1418, 11.5785], 17);
@@ -1017,6 +1020,7 @@
       { lat: 48.1400, lng: 11.5770, name: 'Theatinerstraße', desc: 'Элегантная торговая улица между Мариенплатц и Одеонсплатц.', link: 'https://www.google.com/maps/search/?api=1&query=Theatinerstraße+Munich' },
       { lat: 48.1432, lng: 11.5793, name: 'TAMBOSI', desc: 'Старейшее кафе Мюнхена (1775 г.) с террасой у Хофгартена.', link: 'https://maps.app.goo.gl/X1rW1PgR214x3fBd7' }
     ]);
+    maps.push({ map: m2 });
 
     // 3. Englischer Garten
     var m3 = L.map('map-englgarten', { scrollWheelZoom: false }).setView([48.1560, 11.5920], 14);
@@ -1028,9 +1032,29 @@
       { lat: 48.1643, lng: 11.6020, name: 'Японский чайный домик', desc: 'Островок Японии в Баварии: ручей, мостик и аутентичный домик для чайных церемоний.', link: 'https://www.google.com/maps/search/?api=1&query=Japanisches+Teehaus+Englischer+Garten+Munich' },
       { lat: 48.1580, lng: 11.5935, name: 'Mini-Hofbräuhaus', desc: 'Маленький Хофбройхаус прямо в Английском саду — пиво и баварский перекус на свежем воздухе.', link: 'https://maps.app.goo.gl/7XS5QFr9m7XMHCjX9' }
     ]);
+    maps.push({ map: m3 });
+
+    return maps;
   }
 
-  initMaps();
+  var allMaps = initMaps();
+
+  if (navigator.geolocation) {
+    navigator.geolocation.watchPosition(function(pos) {
+      var lat = pos.coords.latitude, lng = pos.coords.longitude;
+      allMaps.forEach(function(obj) {
+        var ll = L.latLng(lat, lng);
+        if (!obj.me) {
+          obj.me = L.circleMarker(ll, { radius: 8, fillColor: '#3B82F6', color: '#fff', weight: 3, opacity: 1, fillOpacity: 1 }).addTo(obj.map);
+          obj.pulse = L.circleMarker(ll, { radius: 18, fillColor: '#3B82F6', color: '#3B82F6', weight: 1, opacity: 0.3, fillOpacity: 0.15 }).addTo(obj.map);
+          obj.me.bindPopup('<strong>Вы здесь</strong>');
+        } else {
+          obj.me.setLatLng(ll);
+          obj.pulse.setLatLng(ll);
+        }
+      });
+    }, function(){}, { enableHighAccuracy: true, maximumAge: 10000 });
+  }
 </script>
 </body>
 </html>
