@@ -306,7 +306,7 @@
       box-shadow: 0 2px 12px rgba(0,0,0,0.08);
       z-index: 0;
     }
-    .emoji-marker { background: #fce4ec; border: none; border-radius: 50%; box-shadow: 0 1px 4px rgba(0,0,0,.25); display: flex; align-items: center; justify-content: center; }
+    .emoji-marker { background: #e3f2fd; border: none; border-radius: 50%; box-shadow: 0 1px 4px rgba(0,0,0,.25); display: flex; align-items: center; justify-content: center; }
     .leaflet-popup-content {
       font-family: 'Inter', sans-serif;
       font-size: 0.85rem;
@@ -1058,7 +1058,6 @@
     var m3 = L.map('map-englgarten', { scrollWheelZoom: false });
     L.tileLayer(tiles, { attribution: attr, maxZoom: 19 }).addTo(m3);
     addMarkers(m3, [
-      { lat: 48.1435, lng: 11.5878, ic: '🏛', name: 'Eisbachwelle', desc: 'Знаменитая волна для серфинга прямо в центре города — у входа в Английский сад.', link: 'https://www.google.com/maps/search/?api=1&query=Eisbachwelle+Munich' },
       { lat: 48.1499, lng: 11.5909, ic: '🏛', name: 'Монопт', desc: 'Античный храм-ротонда на холме с панорамой парка.', link: 'https://www.google.com/maps/search/?api=1&query=Monopteros+Munich' },
       { lat: 48.1526, lng: 11.5921, ic: '🍴', name: 'Китайская башня', desc: 'Знаменитый пивной сад на 7 000 мест у подножия деревянной пагоды.', link: 'https://www.google.com/maps/search/?api=1&query=Chinesischer+Turm+Munich' },
       { lat: 48.1618, lng: 11.5962, ic: '🏛', name: 'Японский чайный домик', desc: 'Островок Японии в Баварии: ручей, мостик и аутентичный домик для чайных церемоний.', link: 'https://www.google.com/maps/search/?api=1&query=Japanisches+Teehaus+Englischer+Garten+Munich' },
@@ -1077,7 +1076,9 @@
       { lat: 48.1494, lng: 11.5717, ic: '🏛', name: 'Новая Пинакотека', desc: 'Ван Гог, Моне, Климт, Гоген, Ренуар. «Подсолнухи» Ван Гога — один из пяти оригиналов в мире.', link: 'https://www.google.com/maps/search/?api=1&query=Neue+Pinakothek+Munich' },
       { lat: 48.1467, lng: 11.5653, ic: '🏛', name: 'Глиптотека', desc: 'Греческие и римские статуи в одном из старейших музеев мира.', link: 'https://www.google.com/maps/search/?api=1&query=Glyptothek+Munich' },
       { lat: 48.1476, lng: 11.5636, ic: '🏛', name: 'Ленбахгауз', desc: 'Кандинский, Франц Марк, Пауль Клее — лучшая в мире коллекция мюнхенского экспрессионизма.', link: 'https://www.google.com/maps/search/?api=1&query=Lenbachhaus+Munich' },
-      { lat: 48.1458, lng: 11.5672, ic: '🏛', name: 'Египетский музей', desc: 'Мумии, саркофаги, папирусы, статуи фараонов — одна из лучших коллекций в Европе.', link: 'https://www.google.com/maps/search/?api=1&query=Staatliches+Museum+Ägyptischer+Kunst+Munich' }
+      { lat: 48.1458, lng: 11.5672, ic: '🏛', name: 'Египетский музей', desc: 'Мумии, саркофаги, папирусы, статуи фараонов — одна из лучших коллекций в Европе.', link: 'https://www.google.com/maps/search/?api=1&query=Staatliches+Museum+Ägyptischer+Kunst+Munich' },
+      { lat: 48.1492, lng: 11.5626, ic: '🍴', name: 'Wirtshaus Maxvorstadt', desc: 'Традиционный баварский трактир в университетском квартале.', link: 'https://maps.app.goo.gl/R1yuQoXJQbvY9MmaA' },
+      { lat: 48.1488, lng: 11.5685, ic: '🏛', name: 'TUM — Главное здание', desc: 'Технический университет Мюнхена — один из ведущих технических вузов Европы.', link: 'https://www.google.com/maps/search/?api=1&query=TUM+Hauptgebäude+Arcisstraße+Munich' }
     ]);
     maps.push({ map: m6 });
 
