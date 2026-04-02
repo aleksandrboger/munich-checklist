@@ -894,20 +894,19 @@
   <div class="cat-head">
     <span class="cat-icon">💡</span>
     <span class="cat-name">Полезные советы</span>
-    <span class="cat-cnt" id="c12"></span>
   </div>
   <ul class="items" data-cat="12">
-    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
+    <li class="item no-check"><div class="item-body">
       <div class="item-title">Купить недельный билет на транспорт <span class="b b-tip">совет</span></div>
       <div class="item-why">IsarCard Woche — безлимитный проезд на метро, автобусах и трамваях на 7 дней. Для поездок за город нужно докупить другие билеты.</div>
     </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=München+Hauptbahnhof" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
 
-    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
+    <li class="item no-check"><div class="item-body">
       <div class="item-title">Приложение MVV для транспорта <span class="b b-tip">совет</span></div>
       <div class="item-why">Скачайте до приезда — показывает все маршруты метро, автобусов и электричек с пересадками. Работает оффлайн. С ним невозможно заблудиться.</div>
     </div></li>
 
-    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
+    <li class="item no-check"><div class="item-body">
       <div class="item-title">Студенческая скидка в магазинах <span class="b b-tip">совет</span></div>
       <div class="item-why">В магазинах не забывайте проверять, есть ли студенческая скидка — во многих местах она действует по студенческому билету.</div>
     </div></li>
@@ -956,8 +955,8 @@
   function go(el) { el.classList.toggle('done'); sync(); save(); }
 
   function sync() {
-    const all  = document.querySelectorAll('.item');
-    const done = document.querySelectorAll('.item.done');
+    const all  = document.querySelectorAll('.item:not(.no-check)');
+    const done = document.querySelectorAll('.item.done:not(.no-check)');
     const pct  = all.length ? Math.round(done.length / all.length * 100) : 0;
     document.getElementById('bar').style.width = pct + '%';
     document.getElementById('pct').textContent = pct + '%';
@@ -966,8 +965,8 @@
       const ul = document.querySelector('.items[data-cat="' + i + '"]');
       const el = document.getElementById('c' + i);
       if (ul && el) {
-        const t = ul.querySelectorAll('.item').length;
-        const d = ul.querySelectorAll('.item.done').length;
+        const t = ul.querySelectorAll('.item:not(.no-check)').length;
+        const d = ul.querySelectorAll('.item.done:not(.no-check)').length;
         el.textContent = d + ' / ' + t;
       }
     }
