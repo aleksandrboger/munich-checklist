@@ -974,8 +974,8 @@
   sync();
 
   function initMaps() {
-    var tiles = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-    var attr = '&copy; OpenStreetMap';
+    var tiles = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+    var attr = '&copy; OpenStreetMap &copy; CARTO';
     var mStyle = { radius: 10, fillColor: '#E11D48', color: '#fff', weight: 2.5, opacity: 1, fillOpacity: 0.9 };
 
     function popup(name, desc, link) {
