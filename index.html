@@ -932,6 +932,16 @@
   <div id="map-englgarten" class="leaflet-map"></div>
 </div>
 
+<div class="map-section">
+  <div class="map-section-title">📍 Олимпийский парк и окрестности</div>
+  <div id="map-olympia" class="leaflet-map"></div>
+</div>
+
+<div class="map-section">
+  <div class="map-section-title">📍 Правый берег Изара</div>
+  <div id="map-isar" class="leaflet-map"></div>
+</div>
+
 <footer>Приятного путешествия по Мюнхену! ✈️<br>© Саша и Маша Богер, 2026</footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -1035,6 +1045,36 @@
       { lat: 48.1580, lng: 11.5935, name: 'Mini-Hofbräuhaus', desc: 'Маленький Хофбройхаус прямо в Английском саду — пиво и баварский перекус на свежем воздухе.', link: 'https://maps.app.goo.gl/7XS5QFr9m7XMHCjX9' }
     ]);
     maps.push({ map: m3 });
+
+    // 4. Olympiapark
+    var m4 = L.map('map-olympia', { scrollWheelZoom: false });
+    L.tileLayer(tiles, { attribution: attr, maxZoom: 19 }).addTo(m4);
+    addMarkers(m4, [
+      { lat: 48.1735, lng: 11.5515, name: 'Олимпийская башня', desc: 'Скоростной лифт за 30 секунд поднимает на 291 м. В ясный день видны Альпы. Вход ~13\u00a0€.', link: 'https://www.google.com/maps/search/?api=1&query=Olympiaturm+Munich' },
+      { lat: 48.1733, lng: 11.5467, name: 'Олимпийский стадион', desc: 'Легендарная стеклянная «паутинная» крыша — революция в архитектуре.', link: 'https://www.google.com/maps/search/?api=1&query=Olympiastadion+Munich' },
+      { lat: 48.1725, lng: 11.5490, name: 'Олимпийское озеро', desc: 'Педальные и гребные лодки среди зелёных холмов.', link: 'https://www.google.com/maps/search/?api=1&query=Olympiasee+Munich' },
+      { lat: 48.1760, lng: 11.5530, name: 'Олимпийский холм', desc: 'Лучшая бесплатная смотровая площадка: весь парк, башня BMW и Альпы.', link: 'https://www.google.com/maps/search/?api=1&query=Olympiaberg+Munich' },
+      { lat: 48.1770, lng: 11.5590, name: 'BMW Welt', desc: 'Футуристическое здание-облако. Новейшие модели BMW, Mini и Rolls-Royce. Бесплатно.', link: 'https://www.google.com/maps/search/?api=1&query=BMW+Welt+Munich' },
+      { lat: 48.1764, lng: 11.5578, name: 'Музей BMW', desc: 'Здание-«чаша». История марки с 1916 года: мотоциклы, спорткары и концепты. Вход ~10\u00a0€.', link: 'https://www.google.com/maps/search/?api=1&query=BMW+Museum+Munich' },
+      { lat: 48.1802, lng: 11.5555, name: 'Hofbräu am Oberwiesenfeld', desc: 'Филиал Хофбройхауса рядом с Олимпийским парком. Попробуйте кайзершмаррн!', link: 'https://maps.app.goo.gl/DkjvNPZWVu44tdar9' },
+      { lat: 48.1830, lng: 11.5558, name: 'Nostos Taverna', desc: 'Настоящая греческая таверна рядом с Олимпийским парком.', link: 'https://maps.app.goo.gl/z7BKeaRBgea9cWCW6' },
+      { lat: 48.1828, lng: 11.5548, name: 'Kreta Meer', desc: 'Настоящая Критская кухня рядом с Олимпийским парком.', link: 'https://maps.app.goo.gl/JG5W5cqMap29enTi7' },
+      { lat: 48.1812, lng: 11.5390, name: 'Olympia-Einkaufszentrum', desc: 'Один из крупнейших торговых центров Мюнхена — более 130 магазинов.', link: 'https://www.google.com/maps/search/?api=1&query=Olympia-Einkaufszentrum+Munich' }
+    ]);
+    maps.push({ map: m4 });
+
+    // 5. Rechtes Isarufer (Правый берег Изара)
+    var m5 = L.map('map-isar', { scrollWheelZoom: false });
+    L.tileLayer(tiles, { attribution: attr, maxZoom: 19 }).addTo(m5);
+    addMarkers(m5, [
+      { lat: 48.1350, lng: 11.5830, name: 'Wirtshaus in der Au', desc: 'Уютный трактир у Изара — запечённая утка и кнёдли. Пиво Paulaner.', link: 'https://maps.app.goo.gl/or6gQazW67jCkw9WA' },
+      { lat: 48.1297, lng: 11.5854, name: 'Немецкий музей', desc: 'Крупнейший научно-технический музей в мире. Подводная лодка, шахта, молнии. Вход ~15\u00a0€.', link: 'https://www.google.com/maps/search/?api=1&query=Deutsches+Museum+Munich' },
+      { lat: 48.1410, lng: 11.5930, name: 'Максимилианеум', desc: 'Здание баварского парламента на холме. Фасад с фресками возвышается над Изаром.', link: 'https://www.google.com/maps/search/?api=1&query=Maximilianeum+Munich' },
+      { lat: 48.1450, lng: 11.5920, name: 'Прогулка вдоль Изара', desc: 'Галечные пляжи и дикая зелень прямо в городе. Бирюзовая вода — как в Альпах.', link: 'https://www.google.com/maps/search/?api=1&query=Isar+Munich+Reichenbachbrücke' },
+      { lat: 48.0983, lng: 11.5584, name: 'Зоопарк Хеллабрунн', desc: '750 видов животных в «географических зонах». Минимум 4 часа. Вход ~17\u00a0€.', link: 'https://www.google.com/maps/search/?api=1&query=Tierpark+Hellabrunn+Munich' },
+      { lat: 48.1340, lng: 11.5890, name: 'Gaststätte Au', desc: 'Район Ау — уютные улочки на правом берегу Изара с пивными и кафе.', link: 'https://www.google.com/maps/search/?api=1&query=Au+München' }
+    ]);
+    maps.push({ map: m5 });
 
     return maps;
   }
