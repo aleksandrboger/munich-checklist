@@ -7,6 +7,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥨</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -283,6 +284,47 @@
     .b-free { background: #F0FDF4; color: #15803D; border: 1px solid #86EFAC; }
     .b-food { background: #FFF1F2; color: #BE123C; border: 1px solid #FDA4AF; }
     .b-tip  { background: #EFF6FF; color: #1D4ED8; border: 1px solid #93C5FD; }
+
+    /* ══════════ КАРТЫ ══════════ */
+    .map-section {
+      max-width: 540px;
+      margin: 24px auto;
+      padding: 0 12px;
+    }
+    .map-section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #1E293B;
+      margin-bottom: 10px;
+      padding-left: 4px;
+    }
+    .leaflet-map {
+      width: 100%;
+      height: 370px;
+      border-radius: 16px;
+      border: 2px solid #E2E8F0;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      z-index: 0;
+    }
+    .leaflet-popup-content {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      line-height: 1.45;
+      max-width: 220px;
+    }
+    .leaflet-popup-content strong {
+      font-size: 0.95rem;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .leaflet-popup-content a.popup-link {
+      display: inline-block;
+      margin-top: 6px;
+      color: #2563EB;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .leaflet-popup-content a.popup-link:hover { text-decoration: underline; }
 
     /* ══════════ ФУТЕР ══════════ */
     footer {
@@ -874,8 +916,25 @@
 
 </main>
 
+<!-- ═══════════════ ИНТЕРАКТИВНЫЕ КАРТЫ ═══════════════ -->
+<div class="map-section">
+  <div class="map-section-title">📍 Мариенплац и окрестности</div>
+  <div id="map-marienplatz" class="leaflet-map"></div>
+</div>
+
+<div class="map-section">
+  <div class="map-section-title">📍 Одеонсплатц и окрестности</div>
+  <div id="map-odeonsplatz" class="leaflet-map"></div>
+</div>
+
+<div class="map-section">
+  <div class="map-section-title">📍 Английский сад</div>
+  <div id="map-englgarten" class="leaflet-map"></div>
+</div>
+
 <footer>Приятного путешествия по Мюнхену! ✈️<br>© Саша и Маша Богер, 2026</footer>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
   const NC = 12;
   function go(el) { el.classList.toggle('done'); sync(); save(); }
@@ -913,6 +972,65 @@
   })();
 
   sync();
+
+  function initMaps() {
+    var tiles = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    var attr = '&copy; OpenStreetMap';
+    var mStyle = { radius: 10, fillColor: '#E11D48', color: '#fff', weight: 2.5, opacity: 1, fillOpacity: 0.9 };
+
+    function popup(name, desc, link) {
+      return '<strong>' + name + '</strong>' + desc +
+        '<a class="popup-link" href="' + link + '" target="_blank" rel="noopener">Открыть на карте →</a>';
+    }
+
+    function addMarkers(map, pts) {
+      pts.forEach(function(p) {
+        L.circleMarker([p.lat, p.lng], mStyle).bindPopup(popup(p.name, p.desc, p.link)).addTo(map);
+      });
+    }
+
+    // 1. Marienplatz
+    var m1 = L.map('map-marienplatz', { scrollWheelZoom: false }).setView([48.1370, 11.5745], 16);
+    L.tileLayer(tiles, { attribution: attr, maxZoom: 19 }).addTo(m1);
+    addMarkers(m1, [
+      { lat: 48.1374, lng: 11.5755, name: 'Мариенплац', desc: 'Каждый день в 11:00 и 12:00 на башне Новой Ратуши оживают 32 фигурки курантов.', link: 'https://www.google.com/maps/search/?api=1&query=Marienplatz+Munich' },
+      { lat: 48.1365, lng: 11.5757, name: 'Башня «Старый Петер»', desc: '306 ступенек — и весь Мюнхен лежит у ваших ног. Вход ~5\u00a0€.', link: 'https://www.google.com/maps/search/?api=1&query=Peterskirche+Munich' },
+      { lat: 48.1378, lng: 11.5754, name: 'Смотровая Новой Ратуши', desc: 'Есть лифт! С высоты видна Мариенплатц как на ладони. Вход ~6\u00a0€.', link: 'https://www.google.com/maps/search/?api=1&query=Neues+Rathaus+Munich' },
+      { lat: 48.1386, lng: 11.5735, name: 'Фрауэнкирхе', desc: 'Две «луковичные» башни — символ Мюнхена. Внутри — «след дьявола».', link: 'https://www.google.com/maps/search/?api=1&query=Frauenkirche+Munich' },
+      { lat: 48.1353, lng: 11.5767, name: 'Виктуалиенмаркт', desc: '200-летний рынок — душа мюнхенской гастрономии. 140 прилавков.', link: 'https://www.google.com/maps/search/?api=1&query=Viktualienmarkt+Munich' },
+      { lat: 48.1387, lng: 11.5708, name: 'Михаэльскирхе', desc: 'Самый большой ренессансный свод севернее Альп. В крипте покоится Людвиг II.', link: 'https://www.google.com/maps/search/?api=1&query=Michaelskirche+Munich' },
+      { lat: 48.1341, lng: 11.5698, name: 'Азамкирхе', desc: 'Крошечная церковь — каждый сантиметр покрыт золотом, скульптурами и фресками.', link: 'https://www.google.com/maps/search/?api=1&query=Asamkirche+Munich' },
+      { lat: 48.1383, lng: 11.5722, name: 'Кауфингерштрассе', desc: 'Главная торговая улица: от Мариенплатц до Карлсплатц.', link: 'https://www.google.com/maps/search/?api=1&query=Kaufingerstraße+Munich' },
+      { lat: 48.1379, lng: 11.5777, name: 'Dallmayr', desc: 'Кофе в золотой упаковке, чай, вино, баварские конфеты.', link: 'https://www.google.com/maps/search/?api=1&query=Dallmayr+Munich' },
+      { lat: 48.1368, lng: 11.5762, name: 'Vinzenzmurr', desc: 'Леберкез — горячий мясной хлеб в хрустящей булке.', link: 'https://www.google.com/maps/search/?api=1&query=Vinzenzmurr+Marienplatz+Munich' },
+      { lat: 48.1360, lng: 11.5740, name: 'BLOCK HOUSE', desc: 'Сочные стейки на гриле, большие порции и салат-бар.', link: 'https://maps.app.goo.gl/KgHos3TfefbDrecp8' }
+    ]);
+
+    // 2. Odeonsplatz
+    var m2 = L.map('map-odeonsplatz', { scrollWheelZoom: false }).setView([48.1418, 11.5785], 17);
+    L.tileLayer(tiles, { attribution: attr, maxZoom: 19 }).addTo(m2);
+    addMarkers(m2, [
+      { lat: 48.1420, lng: 11.5772, name: 'Одеонсплатц', desc: 'Парадная площадь: Театинеркирхе, Фельдхернхалле и Хофгартен — всё в одном кадре.', link: 'https://www.google.com/maps/search/?api=1&query=Odeonsplatz+Munich' },
+      { lat: 48.1410, lng: 11.5800, name: 'Резиденц', desc: '130 залов, усыпанных золотом и фресками — один из крупнейших дворцов Европы.', link: 'https://www.google.com/maps/search/?api=1&query=Residenz+Munich' },
+      { lat: 48.1435, lng: 11.5810, name: 'Хофгартен', desc: 'Идеально ухоженный итальянский парк прямо в центре города.', link: 'https://www.google.com/maps/search/?api=1&query=Hofgarten+Munich' },
+      { lat: 48.1425, lng: 11.5765, name: 'Театинеркирхе', desc: 'Ярко-жёлтый фасад, а внутри — ослепительно белый интерьер.', link: 'https://www.google.com/maps/search/?api=1&query=Theatinerkirche+Munich' },
+      { lat: 48.1400, lng: 11.5770, name: 'Theatinerstraße', desc: 'Элегантная торговая улица между Мариенплатц и Одеонсплатц.', link: 'https://www.google.com/maps/search/?api=1&query=Theatinerstraße+Munich' },
+      { lat: 48.1432, lng: 11.5793, name: 'TAMBOSI', desc: 'Старейшее кафе Мюнхена (1775 г.) с террасой у Хофгартена.', link: 'https://maps.app.goo.gl/X1rW1PgR214x3fBd7' }
+    ]);
+
+    // 3. Englischer Garten
+    var m3 = L.map('map-englgarten', { scrollWheelZoom: false }).setView([48.1560, 11.5920], 14);
+    L.tileLayer(tiles, { attribution: attr, maxZoom: 19 }).addTo(m3);
+    addMarkers(m3, [
+      { lat: 48.1437, lng: 11.5872, name: 'Eisbachwelle', desc: 'Знаменитая волна для серфинга прямо в центре города — у входа в Английский сад.', link: 'https://www.google.com/maps/search/?api=1&query=Eisbachwelle+Munich' },
+      { lat: 48.1522, lng: 11.5922, name: 'Монопт', desc: 'Античный храм-ротонда на холме с панорамой парка.', link: 'https://www.google.com/maps/search/?api=1&query=Monopteros+Munich' },
+      { lat: 48.1515, lng: 11.5917, name: 'Китайская башня', desc: 'Знаменитый пивной сад на 7 000 мест у подножия деревянной пагоды.', link: 'https://www.google.com/maps/search/?api=1&query=Chinesischer+Turm+Munich' },
+      { lat: 48.1643, lng: 11.6020, name: 'Японский чайный домик', desc: 'Островок Японии в Баварии: ручей, мостик и аутентичный домик для чайных церемоний.', link: 'https://www.google.com/maps/search/?api=1&query=Japanisches+Teehaus+Englischer+Garten+Munich' },
+      { lat: 48.1580, lng: 11.5935, name: 'Mini-Hofbräuhaus', desc: 'Маленький Хофбройхаус прямо в Английском саду — пиво и баварский перекус на свежем воздухе.', link: 'https://maps.app.goo.gl/7XS5QFr9m7XMHCjX9' }
+    ]);
+  }
+
+  initMaps();
 </script>
 </body>
 </html>
