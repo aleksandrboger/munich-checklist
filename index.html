@@ -306,7 +306,7 @@
       box-shadow: 0 2px 12px rgba(0,0,0,0.08);
       z-index: 0;
     }
-    .emoji-marker { background: #fff; border: none; border-radius: 50%; box-shadow: 0 1px 4px rgba(0,0,0,.25); display: flex; align-items: center; justify-content: center; }
+    .emoji-marker { background: #fce4ec; border: none; border-radius: 50%; box-shadow: 0 1px 4px rgba(0,0,0,.25); display: flex; align-items: center; justify-content: center; }
     .leaflet-popup-content {
       font-family: 'Inter', sans-serif;
       font-size: 0.85rem;
@@ -934,6 +934,11 @@
 </div>
 
 <div class="map-section">
+  <div class="map-section-title">📍 Музейный квартал / Кёнигсплатц</div>
+  <div id="map-museums" class="leaflet-map"></div>
+</div>
+
+<div class="map-section">
   <div class="map-section-title">📍 Олимпийский парк и окрестности</div>
   <div id="map-olympia" class="leaflet-map"></div>
 </div>
@@ -1058,11 +1063,25 @@
       { lat: 48.1526, lng: 11.5921, ic: '🍴', name: 'Китайская башня', desc: 'Знаменитый пивной сад на 7 000 мест у подножия деревянной пагоды.', link: 'https://www.google.com/maps/search/?api=1&query=Chinesischer+Turm+Munich' },
       { lat: 48.1618, lng: 11.5962, ic: '🏛', name: 'Японский чайный домик', desc: 'Островок Японии в Баварии: ручей, мостик и аутентичный домик для чайных церемоний.', link: 'https://www.google.com/maps/search/?api=1&query=Japanisches+Teehaus+Englischer+Garten+Munich' },
       { lat: 48.1670, lng: 11.6076, ic: '🍴', name: 'Mini-Hofbräuhaus', desc: 'Маленький Хофбройхаус прямо в Английском саду — пиво и баварский перекус на свежем воздухе.', link: 'https://maps.app.goo.gl/7XS5QFr9m7XMHCjX9' },
-      { lat: 48.1629, lng: 11.5801, ic: '☕', name: 'Zucker coffee & bakery', desc: 'Кофейня-пекарня — авторские десерты и кофе.', link: 'https://maps.app.goo.gl/PdJiDMLexz81k6m49' }
+      { lat: 48.1629, lng: 11.5801, ic: '☕', name: 'Zucker coffee & bakery', desc: 'Кофейня-пекарня — авторские десерты и кофе.', link: 'https://maps.app.goo.gl/PdJiDMLexz81k6m49' },
+      { lat: 48.1586, lng: 11.5869, ic: '🍴', name: 'Alles Wurscht', desc: 'Лучшие колбаски Мюнхена — десятки сортов на гриле: нюрнбергские, карри, краковские.', link: 'https://maps.app.goo.gl/LMqZsxr6nyfZqshD8' }
     ]);
     maps.push({ map: m3 });
 
-    // 4. Olympiapark
+    // 4. Музейный квартал / Кёнигсплатц
+    var m6 = L.map('map-museums', { scrollWheelZoom: false });
+    L.tileLayer(tiles, { attribution: attr, maxZoom: 19 }).addTo(m6);
+    addMarkers(m6, [
+      { lat: 48.1460, lng: 11.5652, ic: '🏛', name: 'Кёнигсплатц', desc: 'Три монументальных здания в античном стиле — как будто перенеслись в Древнюю Грецию.', link: 'https://www.google.com/maps/search/?api=1&query=Königsplatz+Munich' },
+      { lat: 48.1482, lng: 11.5699, ic: '🏛', name: 'Старая Пинакотека', desc: 'Рубенс, Рафаэль, Дюрер, Рембрандт, Ботичелли — одна из величайших коллекций живописи в мире.', link: 'https://www.google.com/maps/search/?api=1&query=Alte+Pinakothek+Munich' },
+      { lat: 48.1494, lng: 11.5717, ic: '🏛', name: 'Новая Пинакотека', desc: 'Ван Гог, Моне, Климт, Гоген, Ренуар. «Подсолнухи» Ван Гога — один из пяти оригиналов в мире.', link: 'https://www.google.com/maps/search/?api=1&query=Neue+Pinakothek+Munich' },
+      { lat: 48.1467, lng: 11.5653, ic: '🏛', name: 'Глиптотека', desc: 'Греческие и римские статуи в одном из старейших музеев мира.', link: 'https://www.google.com/maps/search/?api=1&query=Glyptothek+Munich' },
+      { lat: 48.1476, lng: 11.5636, ic: '🏛', name: 'Ленбахгауз', desc: 'Кандинский, Франц Марк, Пауль Клее — лучшая в мире коллекция мюнхенского экспрессионизма.', link: 'https://www.google.com/maps/search/?api=1&query=Lenbachhaus+Munich' },
+      { lat: 48.1458, lng: 11.5672, ic: '🏛', name: 'Египетский музей', desc: 'Мумии, саркофаги, папирусы, статуи фараонов — одна из лучших коллекций в Европе.', link: 'https://www.google.com/maps/search/?api=1&query=Staatliches+Museum+Ägyptischer+Kunst+Munich' }
+    ]);
+    maps.push({ map: m6 });
+
+    // 5. Olympiapark (renumbered)
     var m4 = L.map('map-olympia', { scrollWheelZoom: false });
     L.tileLayer(tiles, { attribution: attr, maxZoom: 19 }).addTo(m4);
     addMarkers(m4, [
