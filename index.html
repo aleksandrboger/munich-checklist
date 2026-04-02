@@ -984,15 +984,17 @@
     }
 
     function addMarkers(map, pts) {
+      var group = L.featureGroup();
       pts.forEach(function(p) {
-        L.circleMarker([p.lat, p.lng], mStyle).bindPopup(popup(p.name, p.desc, p.link)).addTo(map);
+        L.circleMarker([p.lat, p.lng], mStyle).bindPopup(popup(p.name, p.desc, p.link)).addTo(map).addTo(group);
       });
+      map.fitBounds(group.getBounds().pad(0.15));
     }
 
     var maps = [];
 
     // 1. Marienplatz
-    var m1 = L.map('map-marienplatz', { scrollWheelZoom: false }).setView([48.1370, 11.5745], 16);
+    var m1 = L.map('map-marienplatz', { scrollWheelZoom: false });
     L.tileLayer(tiles, { attribution: attr, maxZoom: 19 }).addTo(m1);
     addMarkers(m1, [
       { lat: 48.1374, lng: 11.5755, name: 'Мариенплац', desc: 'Каждый день в 11:00 и 12:00 на башне Новой Ратуши оживают 32 фигурки курантов.', link: 'https://www.google.com/maps/search/?api=1&query=Marienplatz+Munich' },
@@ -1010,7 +1012,7 @@
     maps.push({ map: m1 });
 
     // 2. Odeonsplatz
-    var m2 = L.map('map-odeonsplatz', { scrollWheelZoom: false }).setView([48.1418, 11.5785], 17);
+    var m2 = L.map('map-odeonsplatz', { scrollWheelZoom: false });
     L.tileLayer(tiles, { attribution: attr, maxZoom: 19 }).addTo(m2);
     addMarkers(m2, [
       { lat: 48.1420, lng: 11.5772, name: 'Одеонсплатц', desc: 'Парадная площадь: Театинеркирхе, Фельдхернхалле и Хофгартен — всё в одном кадре.', link: 'https://www.google.com/maps/search/?api=1&query=Odeonsplatz+Munich' },
@@ -1023,7 +1025,7 @@
     maps.push({ map: m2 });
 
     // 3. Englischer Garten
-    var m3 = L.map('map-englgarten', { scrollWheelZoom: false }).setView([48.1560, 11.5920], 14);
+    var m3 = L.map('map-englgarten', { scrollWheelZoom: false });
     L.tileLayer(tiles, { attribution: attr, maxZoom: 19 }).addTo(m3);
     addMarkers(m3, [
       { lat: 48.1437, lng: 11.5872, name: 'Eisbachwelle', desc: 'Знаменитая волна для серфинга прямо в центре города — у входа в Английский сад.', link: 'https://www.google.com/maps/search/?api=1&query=Eisbachwelle+Munich' },
