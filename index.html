@@ -126,6 +126,13 @@
       font-weight: 500;
     }
     .tip-bar .ico { font-size: 1.3rem; flex-shrink: 0; }
+    .maps-btn {
+      display: block; max-width: 720px; margin: 10px auto 0; padding: 10px 0;
+      text-align: center; font-size: 0.95rem; font-weight: 600; color: #2563EB;
+      background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 12px;
+      text-decoration: none; transition: background .2s;
+    }
+    .maps-btn:active { background: #DBEAFE; }
 
 
     /* ══════════ КОНТЕНТ ══════════ */
@@ -368,9 +375,10 @@
   <span class="ico">👆</span>
   Нажмите на пункт, чтобы отметить. Всё сохраняется<br>
   • Кнопка 📍 откроет место на карте<br>
-  • ☀️ = для хорошей погоды, ☂️ = отлично в дождь<br>
-  • <a href="#maps-anchor" style="color:#2563EB;text-decoration:none">🗺 Перейти к картам ↓</a>
+  • ☀️ = для хорошей погоды, ☂️ = отлично в дождь
 </div>
+
+<a href="#maps-anchor" class="maps-btn">🗺 Перейти к картам ↓</a>
 
 
 <main>
