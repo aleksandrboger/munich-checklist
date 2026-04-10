@@ -134,6 +134,59 @@
     }
     .maps-btn:active { background: #DBEAFE; }
 
+    /* ══════════ БРОНИРОВАНИЯ ══════════ */
+    .booking-wrap {
+      max-width: 720px;
+      margin: 14px auto 0;
+      background: #FFF7ED;
+      border: 1px solid #FDBA74;
+      border-radius: 16px;
+      padding: 18px 22px 14px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .booking-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #9A3412;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .booking-list {
+      list-style: none;
+      display: grid;
+      gap: 6px;
+    }
+    .booking-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: #1E293B;
+      font-weight: 500;
+      padding: 7px 12px;
+      background: white;
+      border-radius: 10px;
+      border: 1px solid #FED7AA;
+    }
+    .booking-date {
+      font-weight: 800;
+      color: #C2410C;
+      min-width: 48px;
+      font-size: 0.85rem;
+    }
+    .booking-name { flex: 1; }
+    .booking-time {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #9A3412;
+      background: #FFF7ED;
+      border: 1px solid #FDBA74;
+      padding: 2px 8px;
+      border-radius: 99px;
+    }
+
 
     /* ══════════ КОНТЕНТ ══════════ */
     main {
@@ -380,6 +433,18 @@
 
 <a href="#maps-anchor" class="maps-btn">🗺 Перейти к картам ↓</a>
 
+<div class="booking-wrap">
+  <div class="booking-title">📋 Забронированные рестораны</div>
+  <ul class="booking-list">
+    <li class="booking-item"><span class="booking-date">09.05</span><span class="booking-name">Kreta Meer</span><span class="booking-time">18:00</span></li>
+    <li class="booking-item"><span class="booking-date">11.05</span><span class="booking-name">Hofbräu am Oberwiesenfeld</span><span class="booking-time">18:00</span></li>
+    <li class="booking-item"><span class="booking-date">12.05</span><span class="booking-name">KONO Korean Steakhouse</span><span class="booking-time">18:00</span></li>
+    <li class="booking-item"><span class="booking-date">13.05</span><span class="booking-name">Haxengrill</span><span class="booking-time">18:00</span></li>
+    <li class="booking-item"><span class="booking-date">14.05</span><span class="booking-name">Wirtshaus in der Au</span><span class="booking-time">18:00</span></li>
+    <li class="booking-item"><span class="booking-date">15.05</span><span class="booking-name">BLOCK HOUSE</span><span class="booking-time">16:00</span></li>
+    <li class="booking-item"><span class="booking-date">16.05</span><span class="booking-name">60 seconds to Napoli</span><span class="booking-time">17:00</span></li>
+  </ul>
+</div>
 
 <main>
 
@@ -742,7 +807,7 @@
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
       <div class="item-title">🥩 BLOCK HOUSE Rindermarkt <span class="b b-food">стейки</span></div>
       <div class="item-why">Проверенная немецкая сеть стейков — сочное мясо на гриле, большие порции и отличный салат-бар.</div>
-    </div><a class="map" href="https://maps.app.goo.gl/KgHos3TfefbDrecp8" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
+    </div><a class="map" href="https://maps.app.goo.gl/bkHoweniewDHXF7j6" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
 
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
       <div class="item-title">🍕 60 seconds to Napoli <span class="b b-food">пицца</span></div>
@@ -768,6 +833,11 @@
       <div class="item-title">🇬🇷 Kreta Meer <span class="b b-food">греческая кухня</span></div>
       <div class="item-why">Настоящая Критская кухня. Рядом с Олимпийским парком.</div>
     </div><a class="map" href="https://maps.app.goo.gl/JG5W5cqMap29enTi7" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
+
+    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
+      <div class="item-title">🍺 Hofbräuhaus am Platzl <span class="b b-food">пивная</span><span class="b b-must">обязательно</span></div>
+      <div class="item-why">Самая знаменитая пивная в мире — с 1589 года! Огромный зал с расписными сводами, живой оркестр в ледерхозенах, литровые кружки и легендарная атмосфера. Здесь пил пиво Моцарт, а Ленин играл в шахматы.</div>
+    </div><a class="map" href="https://maps.app.goo.gl/Rk8vPBqysxgZ1cuG8" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
   </ul>
 </div>
 
@@ -1052,12 +1122,13 @@
       { lat: 48.1380, lng: 11.5720, ic: '🛍', name: 'Кауфингерштрассе', desc: 'Главная торговая улица: от Мариенплатц до Карлсплатц.', link: 'https://www.google.com/maps/search/?api=1&query=Kaufingerstraße+Munich' },
       { lat: 48.1383, lng: 11.5773, ic: '🛍', name: 'Dallmayr', desc: 'Кофе в золотой упаковке, чай, вино, баварские конфеты.', link: 'https://www.google.com/maps/search/?api=1&query=Dallmayr+Munich' },
       { lat: 48.1377, lng: 11.5752, ic: '🍗', name: 'Vinzenzmurr', desc: 'Леберкез — горячий мясной хлеб в хрустящей булке.', link: 'https://www.google.com/maps/search/?api=1&query=Vinzenzmurr+Marienplatz+Munich' },
-      { lat: 48.1360, lng: 11.5747, ic: '🍗', name: 'BLOCK HOUSE', desc: 'Сочные стейки на гриле, большие порции и салат-бар.', link: 'https://maps.app.goo.gl/KgHos3TfefbDrecp8' },
+      { lat: 48.1360, lng: 11.5747, ic: '🍗', name: 'BLOCK HOUSE', desc: 'Сочные стейки на гриле, большие порции и салат-бар.', link: 'https://maps.app.goo.gl/bkHoweniewDHXF7j6' },
       { lat: 48.1340, lng: 11.5710, ic: '🛍', name: 'Sendlinger Straße', desc: 'Торговая улица от Сендлингер Тор до Мариенплатц — магазины, бутики и Азамкирхе.', link: 'https://www.google.com/maps/search/?api=1&query=Sendlinger+Straße+Munich' },
       { lat: 48.1375, lng: 11.5785, ic: '🍗', name: 'Haxengrill', desc: 'Культовое место для свиной рульки — хрустящая корочка, сочное мясо.', link: 'https://maps.app.goo.gl/gi1qfkvM8KcKtGkY7' },
       { lat: 48.1363, lng: 11.5731, ic: '🛍', name: 'servus.heimat', desc: 'Стильный магазин баварских сувениров и сувениров с таксами.', link: 'https://maps.app.goo.gl/oWs9HaFibAq1wM399' },
       { lat: 48.1345, lng: 11.5748, ic: '🍗', name: 'Eataly', desc: 'Итальянский гастрономический рай — ресторан, кафе и магазин под одной крышей.', link: 'https://maps.app.goo.gl/uxUknmr2T3GqCTfN6' },
-      { lat: 48.1364, lng: 11.5719, ic: '🍗', name: '60 seconds to Napoli', desc: 'Неаполитанская пицца из дровяной печи. Одна из лучших пиццерий.', link: 'https://maps.app.goo.gl/cQPuWduk76pk4NMk7' }
+      { lat: 48.1364, lng: 11.5719, ic: '🍗', name: '60 seconds to Napoli', desc: 'Неаполитанская пицца из дровяной печи. Одна из лучших пиццерий.', link: 'https://maps.app.goo.gl/cQPuWduk76pk4NMk7' },
+      { lat: 48.1376, lng: 11.5799, ic: '🍺', name: 'Hofbräuhaus am Platzl', desc: 'Самая знаменитая пивная в мире — с 1589 года! Литровые кружки и живой оркестр.', link: 'https://maps.app.goo.gl/Rk8vPBqysxgZ1cuG8' }
     ]);
     maps.push({ map: m1 });
 
