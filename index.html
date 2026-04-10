@@ -68,6 +68,7 @@
     /* ══════════ ПРОГРЕСС ══════════ */
     .progress-wrap {
       max-width: 720px;
+      width: calc(100% - 32px);
       margin: 0 auto;
       background: white;
       border-radius: 18px;
@@ -113,6 +114,7 @@
     /* ══════════ ПОДСКАЗКА ══════════ */
     .tip-bar {
       max-width: 720px;
+      width: calc(100% - 32px);
       margin: 14px auto 0;
       background: #EFF6FF;
       border: 1px solid #BFDBFE;
@@ -127,7 +129,7 @@
     }
     .tip-bar .ico { font-size: 1.3rem; flex-shrink: 0; }
     .maps-btn {
-      display: block; max-width: 720px; margin: 10px auto 0; padding: 10px 0;
+      display: block; max-width: 720px; width: calc(100% - 32px); margin: 10px auto 0; padding: 10px 0;
       text-align: center; font-size: 0.95rem; font-weight: 600; color: #2563EB;
       background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 12px;
       text-decoration: none; transition: background .2s;
@@ -137,6 +139,7 @@
     /* ══════════ БРОНИРОВАНИЯ ══════════ */
     .booking-wrap {
       max-width: 720px;
+      width: calc(100% - 32px);
       margin: 14px auto 0;
       background: #FFF7ED;
       border: 1px solid #FDBA74;
@@ -457,13 +460,13 @@
 <div class="booking-wrap">
   <div class="booking-title">📋 Забронированные рестораны</div>
   <ul class="booking-list">
-    <li class="booking-item"><span class="booking-date">09.05</span><span class="booking-name"><a href="https://maps.app.goo.gl/JG5W5cqMap29enTi7" target="_blank" rel="noopener">Kreta Meer</a></span><span class="booking-time">18:00</span><a class="booking-map" href="https://maps.app.goo.gl/JG5W5cqMap29enTi7" target="_blank" rel="noopener">📍</a></li>
-    <li class="booking-item"><span class="booking-date">11.05</span><span class="booking-name"><a href="https://maps.app.goo.gl/DkjvNPZWVu44tdar9" target="_blank" rel="noopener">Hofbräu am Oberwiesenfeld</a></span><span class="booking-time">18:00</span><a class="booking-map" href="https://maps.app.goo.gl/DkjvNPZWVu44tdar9" target="_blank" rel="noopener">📍</a></li>
-    <li class="booking-item"><span class="booking-date">12.05</span><span class="booking-name"><a href="https://maps.app.goo.gl/BaTRGbhvk2BBjx827" target="_blank" rel="noopener">KONO Korean Steakhouse</a></span><span class="booking-time">18:00</span><a class="booking-map" href="https://maps.app.goo.gl/BaTRGbhvk2BBjx827" target="_blank" rel="noopener">📍</a></li>
-    <li class="booking-item"><span class="booking-date">13.05</span><span class="booking-name"><a href="https://maps.app.goo.gl/gi1qfkvM8KcKtGkY7" target="_blank" rel="noopener">Haxengrill</a></span><span class="booking-time">18:00</span><a class="booking-map" href="https://maps.app.goo.gl/gi1qfkvM8KcKtGkY7" target="_blank" rel="noopener">📍</a></li>
-    <li class="booking-item"><span class="booking-date">14.05</span><span class="booking-name"><a href="https://maps.app.goo.gl/or6gQazW67jCkw9WA" target="_blank" rel="noopener">Wirtshaus in der Au</a></span><span class="booking-time">18:00</span><a class="booking-map" href="https://maps.app.goo.gl/or6gQazW67jCkw9WA" target="_blank" rel="noopener">📍</a></li>
-    <li class="booking-item"><span class="booking-date">15.05</span><span class="booking-name"><a href="https://maps.app.goo.gl/bkHoweniewDHXF7j6" target="_blank" rel="noopener">BLOCK HOUSE</a></span><span class="booking-time">16:00</span><a class="booking-map" href="https://maps.app.goo.gl/bkHoweniewDHXF7j6" target="_blank" rel="noopener">📍</a></li>
-    <li class="booking-item"><span class="booking-date">16.05</span><span class="booking-name"><a href="https://maps.app.goo.gl/cQPuWduk76pk4NMk7" target="_blank" rel="noopener">60 seconds to Napoli</a></span><span class="booking-time">17:00</span><a class="booking-map" href="https://maps.app.goo.gl/cQPuWduk76pk4NMk7" target="_blank" rel="noopener">📍</a></li>
+    <li class="booking-item"><span class="booking-date">09.05</span><span class="booking-name"><a href="https://maps.app.goo.gl/JG5W5cqMap29enTi7" target="_blank" rel="noopener">🇬🇷 Kreta Meer</a></span><span class="booking-time">18:00</span><a class="booking-map" href="https://maps.app.goo.gl/JG5W5cqMap29enTi7" target="_blank" rel="noopener">📍</a></li>
+    <li class="booking-item"><span class="booking-date">11.05</span><span class="booking-name"><a href="https://maps.app.goo.gl/DkjvNPZWVu44tdar9" target="_blank" rel="noopener">🍺 Hofbräu am Oberwiesenfeld</a></span><span class="booking-time">18:00</span><a class="booking-map" href="https://maps.app.goo.gl/DkjvNPZWVu44tdar9" target="_blank" rel="noopener">📍</a></li>
+    <li class="booking-item"><span class="booking-date">12.05</span><span class="booking-name"><a href="https://maps.app.goo.gl/BaTRGbhvk2BBjx827" target="_blank" rel="noopener">🥩 KONO Korean Steakhouse</a></span><span class="booking-time">18:00</span><a class="booking-map" href="https://maps.app.goo.gl/BaTRGbhvk2BBjx827" target="_blank" rel="noopener">📍</a></li>
+    <li class="booking-item"><span class="booking-date">13.05</span><span class="booking-name"><a href="https://maps.app.goo.gl/gi1qfkvM8KcKtGkY7" target="_blank" rel="noopener">🍖 Haxengrill</a></span><span class="booking-time">18:00</span><a class="booking-map" href="https://maps.app.goo.gl/gi1qfkvM8KcKtGkY7" target="_blank" rel="noopener">📍</a></li>
+    <li class="booking-item"><span class="booking-date">14.05</span><span class="booking-name"><a href="https://maps.app.goo.gl/or6gQazW67jCkw9WA" target="_blank" rel="noopener">🦆 Wirtshaus in der Au</a></span><span class="booking-time">18:00</span><a class="booking-map" href="https://maps.app.goo.gl/or6gQazW67jCkw9WA" target="_blank" rel="noopener">📍</a></li>
+    <li class="booking-item"><span class="booking-date">15.05</span><span class="booking-name"><a href="https://maps.app.goo.gl/bkHoweniewDHXF7j6" target="_blank" rel="noopener">🥩 BLOCK HOUSE</a></span><span class="booking-time">16:00</span><a class="booking-map" href="https://maps.app.goo.gl/bkHoweniewDHXF7j6" target="_blank" rel="noopener">📍</a></li>
+    <li class="booking-item"><span class="booking-date">16.05</span><span class="booking-name"><a href="https://maps.app.goo.gl/cQPuWduk76pk4NMk7" target="_blank" rel="noopener">🍕 60 seconds to Napoli</a></span><span class="booking-time">17:00</span><a class="booking-map" href="https://maps.app.goo.gl/cQPuWduk76pk4NMk7" target="_blank" rel="noopener">📍</a></li>
   </ul>
 </div>
 
