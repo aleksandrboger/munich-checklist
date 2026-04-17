@@ -633,11 +633,6 @@
   </div>
   <ul class="items" data-cat="4">
     <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
-      <div class="item-title">☀️ Олимпийская башня — 291 м <span class="b b-must">обязательно</span></div>
-      <div class="item-why">Скоростной лифт за 30 секунд поднимает на высоту, откуда в ясный день видны Альпы. Наверху — вращающийся ресторан. Вход ~13 €.</div>
-    </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Olympiaturm+Munich" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
-
-    <li class="item" onclick="go(this)"><div class="cb">✓</div><div class="item-body">
       <div class="item-title">☀️ Лодка на Олимпийском озере</div>
       <div class="item-why">Педальные и гребные лодки среди зелёных холмов, а на заднем плане — знаменитая «паутинная» крыша стадиона.</div>
     </div><a class="map" href="https://www.google.com/maps/search/?api=1&query=Olympiasee+Munich" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="pin">📍</i></a></li>
@@ -1212,7 +1207,6 @@
     var m4 = L.map('map-olympia', { scrollWheelZoom: false });
     L.tileLayer(tiles, { attribution: attr, maxZoom: 19 }).addTo(m4);
     addMarkers(m4, [
-      { lat: 48.1744, lng: 11.5537, ic: '🏛', name: 'Олимпийская башня', desc: 'Скоростной лифт за 30 секунд поднимает на 291 м. В ясный день видны Альпы. Вход ~13\u00a0€.', link: 'https://www.google.com/maps/search/?api=1&query=Olympiaturm+Munich' },
       { lat: 48.1731, lng: 11.5465, ic: '🏛', name: 'Олимпийский стадион', desc: 'Легендарная стеклянная «паутинная» крыша — революция в архитектуре.', link: 'https://www.google.com/maps/search/?api=1&query=Olympiastadion+Munich' },
       { lat: 48.1715, lng: 11.5460, ic: '🌳', name: 'Олимпийское озеро', desc: 'Педальные и гребные лодки среди зелёных холмов.', link: 'https://www.google.com/maps/search/?api=1&query=Olympiasee+Munich' },
       { lat: 48.1699, lng: 11.5516, ic: '🌳', name: 'Олимпийский холм', desc: 'Лучшая бесплатная смотровая площадка: весь парк, башня BMW и Альпы.', link: 'https://www.google.com/maps/search/?api=1&query=Olympiaberg+Munich' },
